@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión Financiera - Admin Lux</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <!--<link rel="stylesheet" href="../css/styles.css">-->
+    <link rel="stylesheet" href="css/admin.css">
+    <link rel="stylesheet" href="css/finanzas.css">
+</head>
+<body class="admin-body">
+    <!-- Sidebar Navigation -->
+    <nav class="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">
+                <i class="fas fa-building"></i>
+                <span>Residencias Lux</span>
+                <small class="admin-badge">Admin</small>
+            </div>
+        </div>
+        
+        <ul class="sidebar-nav">
+            <li class="nav-item">
+                <a href="index.html" class="nav-link">
+                    <i class="fas fa-tachometer-alt"></i>
+                    <span>Dashboard</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="residentes.html" class="nav-link">
+                    <i class="fas fa-users"></i>
+                    <span>Residentes</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="propiedades.html" class="nav-link">
+                    <i class="fas fa-home"></i>
+                    <span>Propiedades</span>
+                </a>
+            </li>
+            <li class="nav-item active">
+                <a href="finanzas.html" class="nav-link">
+                    <i class="fas fa-chart-line"></i>
+                    <span>Finanzas</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="reportes.html" class="nav-link">
+                    <i class="fas fa-chart-bar"></i>
+                    <span>Reportes</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="configuracion.html" class="nav-link">
+                    <i class="fas fa-cogs"></i>
+                    <span>Configuración</span>
+                </a>
+            </li>
+        </ul>
+        
+        <div class="sidebar-footer">
+            <div class="user-info">
+                <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Admin" class="user-avatar">
+                <div class="user-details">
+                    <span class="user-name">Admin Lux</span>
+                    <span class="user-role">Administrador General</span>
+                </div>
+            </div>
+            <a href="../index.html" class="logout-btn">
+                <i class="fas fa-sign-out-alt"></i>
+                Cerrar Sesión
+            </a>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <header class="content-header">
+            <div>
+                <h1>Gestión Financiera</h1>
+                <p class="text-muted">Control de ingresos, gastos y estados financieros</p>
+            </div>
+            <div class="header-actions">
+                <button class="btn btn-primary" id="nuevoPagoBtn">
+                    <i class="fas fa-plus"></i>
+                    Registrar Pago
+                </button>
+                <button class="btn btn-outline-primary ms-2" id="generarRecibosBtn">
+                    <i class="fas fa-file-invoice-dollar"></i>
+                    Generar Recibos
+                </button>
+            </div>
+        </header>
+
+        <!-- Estadísticas Financieras -->
+        <div class="row quick-stats">
+            <div class="col-xl-2 col-md-4">
+                <div class="stat-card">
+                    <div class="stat-icon bg-primary">
+                        <i class="fas fa-money-bill-wave"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>$45,680</h3>
+                        <p>Ingresos del Mes</p>
+                        <span class="stat-trend positive">
+                            <i class="fas fa-arrow-up"></i> 8%
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-2 col-md-4">
+                <div class="stat-card">
+                    <div class="stat-icon bg-success">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>24</h3>
+                        <p>Pagos al Día</p>
+                        <span class="stat-trend positive">
+                            <i class="fas fa-arrow-up"></i> 12%
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-2 col-md-4">
+                <div class="stat-card">
+                    <div class="stat-icon bg-warning">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>5</h3>
+                        <p>Pagos Pendientes</p>
+                        <span class="stat-trend negative">
+                            <i class="fas fa-arrow-down"></i> 15%
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-2 col-md-4">
+                <div class="stat-card">
+                    <div class="stat-icon bg-danger">
+                        <i class="fas fa-exclamation-triangle"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>2</h3>
+                        <p>Pagos Vencidos</p>
+                        <span class="stat-trend negative">
+                            <i class="fas fa-arrow-down"></i> 25%
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-2 col-md-4">
+                <div class="stat-card">
+                    <div class="stat-icon bg-info">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>$12,450</h3>
+                        <p>Gastos del Mes</p>
+                        <span class="stat-trend positive">
+                            <i class="fas fa-arrow-up"></i> 5%
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-2 col-md-4">
+                <div class="stat-card">
+                    <div class="stat-icon bg-secondary">
+                        <i class="fas fa-piggy-bank"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>$33,230</h3>
+                        <p>Utilidad Neta</p>
+                        <span class="stat-trend positive">
+                            <i class="fas fa-arrow-up"></i> 10%
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pestañas de Navegación -->
+        <ul class="nav nav-tabs mb-4" id="finanzasTabs" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="pagos-tab" data-bs-toggle="tab" data-bs-target="#pagos" type="button">
+                    <i class="fas fa-credit-card me-2"></i>Pagos y Cobros
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="gastos-tab" data-bs-toggle="tab" data-bs-target="#gastos" type="button">
+                    <i class="fas fa-receipt me-2"></i>Gastos Operativos
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="reportes-tab" data-bs-toggle="tab" data-bs-target="#reportes" type="button">
+                    <i class="fas fa-chart-bar me-2"></i>Reportes Financieros
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="presupuesto-tab" data-bs-toggle="tab" data-bs-target="#presupuesto" type="button">
+                    <i class="fas fa-chart-pie me-2"></i>Presupuesto
+                </button>
+            </li>
+        </ul>
+
+        <!-- Contenido de Pestañas -->
+        <div class="tab-content" id="finanzasTabContent">
+            <!-- Pestaña Pagos y Cobros -->
+            <div class="tab-pane fade show active" id="pagos" role="tabpanel">
+                <!-- Filtros y Búsqueda -->
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <div class="row g-3">
+                            <div class="col-md-3">
+                                <label class="form-label">Buscar</label>
+                                <div class="input-group">
+                                    <span class="input-group-text">
+                                        <i class="fas fa-search"></i>
+                                    </span>
+                                    <input type="text" class="form-control" id="searchPagos" placeholder="Residente, propiedad...">
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <label class="form-label">Estado</label>
+                                <select class="form-select" id="filterEstadoPago">
+                                    <option value="">Todos</option>
+                                    <option value="pagado">Pagado</option>
+                                    <option value="pendiente">Pendiente</option>
+                                    <option value="vencido">Vencido</option>
+                                </select>
+                            </div>
+                            <div class="col-md-2">
+                                <label class="form-label">Mes</label>
+                                <select class="form-select" id="filterMes">
+                                    <option value="">Todos</option>
+                                    <option value="1">Enero</option>
+                                    <option value="2">Febrero</option>
+                                    <option value="3">Marzo</option>
+                                    <option value="4">Abril</option>
+                                    <option value="5">Mayo</option>
+                                    <option value="6">Junio</option>
+                                    <option value="7">Julio</option>
+                                    <option value="8">Agosto</option>
+                                    <option value="9">Septiembre</option>
+                                    <option value="10">Octubre</option>
+                                    <option value="11">Noviembre</option>
+                                    <option value="12">Diciembre</option>
+                                </select>
+                            </div>
+                            <div class="col-md-2">
+                                <label class="form-label">Año</label>
+                                <select class="form-select" id="filterAnio">
+                                    <option value="2024">2024</option>
+                                    <option value="2023">2023</option>
+                                    <option value="2022">2022</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3">
+                                <label class="form-label">Acciones</label>
+                                <div class="d-flex gap-2">
+                                    <button class="btn btn-outline-primary" id="aplicarFiltrosPagos">
+                                        <i class="fas fa-filter"></i>
+                                        Aplicar
+                                    </button>
+                                    <button class="btn btn-outline-secondary" id="limpiarFiltrosPagos">
+                                        <i class="fas fa-times"></i>
+                                        Limpiar
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Resumen de Pagos -->
+                <div class="row mb-4">
+                    <div class="col-md-8">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3><i class="fas fa-chart-line me-2"></i>Ingresos Mensuales 2024</h3>
+                            </div>
+                            <div class="card-body">
+                                <canvas id="ingresosChart" height="250"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3><i class="fas fa-chart-pie me-2"></i>Distribución de Pagos</h3>
+                            </div>
+                            <div class="card-body">
+                                <canvas id="distribucionPagosChart" height="250"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Lista de Pagos -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-list me-2"></i>Registro de Pagos</h3>
+                        <div class="header-info">
+                            <span class="text-muted">Total: <strong id="totalPagos">$45,680</strong></span>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-hover" id="pagosTable">
+                                <thead>
+                                    <tr>
+                                        <th>Residente</th>
+                                        <th>Propiedad</th>
+                                        <th>Concepto</th>
+                                        <th>Fecha Venc.</th>
+                                        <th>Fecha Pago</th>
+                                        <th>Monto</th>
+                                        <th>Método</th>
+                                        <th>Estado</th>
+                                        <th>Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="pagosTableBody">
+                                    <!-- Los pagos se cargan con JavaScript -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pestaña Gastos Operativos -->
+            <div class="tab-pane fade" id="gastos" role="tabpanel">
+                <div class="row mb-4">
+                    <div class="col-md-8">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3><i class="fas fa-chart-line me-2"></i>Evolución de Gastos</h3>
+                            </div>
+                            <div class="card-body">
+                                <canvas id="gastosChart" height="250"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3><i class="fas fa-chart-pie me-2"></i>Distribución de Gastos</h3>
+                            </div>
+                            <div class="card-body">
+                                <canvas id="distribucionGastosChart" height="250"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Lista de Gastos -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-receipt me-2"></i>Registro de Gastos</h3>
+                        <button class="btn btn-primary btn-sm" id="nuevoGastoBtn">
+                            <i class="fas fa-plus"></i>
+                            Nuevo Gasto
+                        </button>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-hover" id="gastosTable">
+                                <thead>
+                                    <tr>
+                                        <th>Fecha</th>
+                                        <th>Concepto</th>
+                                        <th>Categoría</th>
+                                        <th>Proveedor</th>
+                                        <th>Monto</th>
+                                        <th>Método Pago</th>
+                                        <th>Estado</th>
+                                        <th>Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="gastosTableBody">
+                                    <!-- Los gastos se cargan con JavaScript -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pestaña Reportes Financieros -->
+            <div class="tab-pane fade" id="reportes" role="tabpanel">
+                <div class="row mb-4">
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3><i class="fas fa-balance-scale me-2"></i>Estado de Resultados</h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="resultados-financieros">
+                                    <div class="resultado-item">
+                                        <span>Ingresos Totales</span>
+                                        <strong class="text-success">$45,680</strong>
+                                    </div>
+                                    <div class="resultado-item">
+                                        <span>Gastos Operativos</span>
+                                        <strong class="text-danger">$12,450</strong>
+                                    </div>
+                                    <div class="resultado-item resultado-total">
+                                        <span>Utilidad Neta</span>
+                                        <strong class="text-primary">$33,230</strong>
+                                    </div>
+                                    <div class="resultado-meta">
+                                        <small class="text-muted">Margen de ganancia: 72.7%</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3><i class="fas fa-trending-up me-2"></i>Métricas Clave</h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="metricas-grid">
+                                    <div class="metrica-card">
+                                        <i class="fas fa-percentage text-primary"></i>
+                                        <div>
+                                            <strong>95.2%</strong>
+                                            <small>Tasa de Cobranza</small>
+                                        </div>
+                                    </div>
+                                    <div class="metrica-card">
+                                        <i class="fas fa-clock text-warning"></i>
+                                        <div>
+                                            <strong>4.8%</strong>
+                                            <small>Mora</small>
+                                        </div>
+                                    </div>
+                                    <div class="metrica-card">
+                                        <i class="fas fa-dollar-sign text-success"></i>
+                                        <div>
+                                            <strong>$1,524</strong>
+                                            <small>Ingreso Promedio</small>
+                                        </div>
+                                    </div>
+                                    <div class="metrica-card">
+                                        <i class="fas fa-home text-info"></i>
+                                        <div>
+                                            <strong>66.7%</strong>
+                                            <small>Ocupación</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Reportes Disponibles -->
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="card reporte-card">
+                            <div class="card-body text-center">
+                                <i class="fas fa-file-invoice-dollar text-primary mb-3"></i>
+                                <h5>Reporte de Ingresos</h5>
+                                <p class="text-muted">Detalle completo de todos los ingresos</p>
+                                <button class="btn btn-outline-primary w-100">
+                                    <i class="fas fa-download me-2"></i>Descargar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card reporte-card">
+                            <div class="card-body text-center">
+                                <i class="fas fa-receipt text-warning mb-3"></i>
+                                <h5>Reporte de Gastos</h5>
+                                <p class="text-muted">Análisis detallado de gastos</p>
+                                <button class="btn btn-outline-primary w-100">
+                                    <i class="fas fa-download me-2"></i>Descargar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card reporte-card">
+                            <div class="card-body text-center">
+                                <i class="fas fa-chart-bar text-success mb-3"></i>
+                                <h5>Reporte Mensual</h5>
+                                <p class="text-muted">Resumen financiero mensual</p>
+                                <button class="btn btn-outline-primary w-100">
+                                    <i class="fas fa-download me-2"></i>Descargar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pestaña Presupuesto -->
+            <div class="tab-pane fade" id="presupuesto" role="tabpanel">
+                <div class="row mb-4">
+                    <div class="col-md-8">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3><i class="fas fa-chart-line me-2"></i>Seguimiento Presupuestario</h3>
+                            </div>
+                            <div class="card-body">
+                                <canvas id="presupuestoChart" height="250"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3><i class="fas fa-bullseye me-2"></i>Estado Presupuesto</h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="presupuesto-estado">
+                                    <div class="presupuesto-item">
+                                        <span>Presupuesto Mensual</span>
+                                        <strong>$15,000</strong>
+                                    </div>
+                                    <div class="presupuesto-item">
+                                        <span>Gastado</span>
+                                        <strong class="text-danger">$12,450</strong>
+                                    </div>
+                                    <div class="presupuesto-item">
+                                        <span>Disponible</span>
+                                        <strong class="text-success">$2,550</strong>
+                                    </div>
+                                    <div class="progress mt-3">
+                                        <div class="progress-bar bg-warning" style="width: 83%">83%</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Detalle de Presupuesto por Categoría -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-list me-2"></i>Presupuesto por Categoría</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-hover" id="presupuestoTable">
+                                <thead>
+                                    <tr>
+                                        <th>Categoría</th>
+                                        <th>Presupuesto</th>
+                                        <th>Gastado</th>
+                                        <th>Disponible</th>
+                                        <th>% Usado</th>
+                                        <th>Estado</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="presupuestoTableBody">
+                                    <!-- Los datos de presupuesto se cargan con JavaScript -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Modal Registrar Pago -->
+    <div class="modal fade" id="pagoModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="pagoModalTitle">Registrar Pago</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="pagoForm">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Residente *</label>
+                                    <select class="form-select" id="pagoResidente" required>
+                                        <option value="">Seleccionar residente</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Propiedad</label>
+                                    <input type="text" class="form-control" id="pagoPropiedad" readonly>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Concepto *</label>
+                                    <select class="form-select" id="pagoConcepto" required>
+                                        <option value="">Seleccionar concepto</option>
+                                        <option value="renta">Renta Mensual</option>
+                                        <option value="mantenimiento">Mantenimiento</option>
+                                        <option value="servicios">Servicios</option>
+                                        <option value="multa">Multa</option>
+                                        <option value="otros">Otros</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Monto *</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text">$</span>
+                                        <input type="number" class="form-control" id="pagoMonto" step="0.01" required>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Fecha de Pago *</label>
+                                    <input type="text" class="form-control" id="pagoFecha" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Método de Pago *</label>
+                                    <select class="form-select" id="pagoMetodo" required>
+                                        <option value="">Seleccionar método</option>
+                                        <option value="efectivo">Efectivo</option>
+                                        <option value="transferencia">Transferencia</option>
+                                        <option value="tarjeta">Tarjeta</option>
+                                        <option value="cheque">Cheque</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Referencia/Comprobante</label>
+                            <input type="text" class="form-control" id="pagoReferencia" placeholder="Número de transacción o referencia">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Observaciones</label>
+                            <textarea class="form-control" id="pagoObservaciones" rows="3"></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" id="guardarPagoBtn">Registrar Pago</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Nuevo Gasto -->
+    <div class="modal fade" id="gastoModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Registrar Gasto</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="gastoForm">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Concepto *</label>
+                                    <input type="text" class="form-control" id="gastoConcepto" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Categoría *</label>
+                                    <select class="form-select" id="gastoCategoria" required>
+                                        <option value="">Seleccionar categoría</option>
+                                        <option value="mantenimiento">Mantenimiento</option>
+                                        <option value="servicios">Servicios Públicos</option>
+                                        <option value="nomina">Nómina</option>
+                                        <option value="administrativo">Gastos Administrativos</option>
+                                        <option value="seguros">Seguros</option>
+                                        <option value="impuestos">Impuestos</option>
+                                        <option value="otros">Otros</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Monto *</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text">$</span>
+                                        <input type="number" class="form-control" id="gastoMonto" step="0.01" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Fecha *</label>
+                                    <input type="text" class="form-control" id="gastoFecha" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Proveedor</label>
+                                    <input type="text" class="form-control" id="gastoProveedor">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Método de Pago *</label>
+                                    <select class="form-select" id="gastoMetodoPago" required>
+                                        <option value="">Seleccionar método</option>
+                                        <option value="efectivo">Efectivo</option>
+                                        <option value="transferencia">Transferencia</option>
+                                        <option value="tarjeta">Tarjeta</option>
+                                        <option value="cheque">Cheque</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Descripción</label>
+                            <textarea class="form-control" id="gastoDescripcion" rows="3"></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Factura/Comprobante</label>
+                            <input type="text" class="form-control" id="gastoComprobante" placeholder="Número de factura">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" id="guardarGastoBtn">Registrar Gasto</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/es.js"></script>
+    <script src="js/admin.js"></script>
+    <script src="js/finanzas.js"></script>
+</body>
+</html>

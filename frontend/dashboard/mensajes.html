@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mensajes - Residencias Lux</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/mensajes.css">
+</head>
+<body class="dashboard-body">
+    <!-- Sidebar Navigation -->
+    <nav class="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">
+                <i class="fas fa-building"></i>
+                <span>Residencias Lux</span>
+            </div>
+        </div>
+        
+        <ul class="sidebar-nav">
+            <li class="nav-item">
+                <a href="index.html" class="nav-link">
+                    <i class="fas fa-home"></i>
+                    <span>Dashboard</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="mi-departamento.html" class="nav-link">
+                    <i class="fas fa-door-open"></i>
+                    <span>Mi Departamento</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="reservas.html" class="nav-link">
+                    <i class="fas fa-calendar-check"></i>
+                    <span>Reservar Áreas</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="acceso.html" class="nav-link">
+                    <i class="fas fa-user-friends"></i>
+                    <span>Control de Acceso</span>
+                </a>
+            </li>
+            <li class="nav-item active">
+                <a href="mensajes.html" class="nav-link">
+                    <i class="fas fa-comments"></i>
+                    <span>Mensajes</span>
+                    <span class="badge bg-danger" id="unreadBadge">3</span>
+                </a>
+            </li>
+        </ul>
+        
+        <div class="sidebar-footer">
+            <div class="user-info">
+                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Usuario" class="user-avatar">
+                <div class="user-details">
+                    <span class="user-name">Juan Pérez</span>
+                    <span class="user-role">Apartamento 302</span>
+                </div>
+            </div>
+            <a href="../index.html" class="logout-btn">
+                <i class="fas fa-sign-out-alt"></i>
+                Cerrar Sesión
+            </a>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <header class="content-header">
+            <div>
+                <h1>Mensajes</h1>
+                <p class="text-muted">Comunícate con el administrador y otros residentes</p>
+            </div>
+            <div class="header-actions">
+                <button class="btn btn-primary" id="nuevoMensajeBtn">
+                    <i class="fas fa-edit"></i>
+                    Nuevo Mensaje
+                </button>
+            </div>
+        </header>
+
+        <div class="row mensajes-container">
+            <!-- Lista de Conversaciones -->
+            <div class="col-lg-4">
+                <div class="card conversaciones-card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-inbox me-2"></i>Conversaciones</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="conversaciones-filters mb-3">
+                            <div class="input-group">
+                                <span class="input-group-text">
+                                    <i class="fas fa-search"></i>
+                                </span>
+                                <input type="text" class="form-control" id="searchConversations" placeholder="Buscar conversaciones...">
+                            </div>
+                        </div>
+
+                        <div class="conversation-list" id="conversationList">
+                            <!-- Las conversaciones se cargan con JavaScript -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contactos Rápidos -->
+                <div class="card mt-4">
+                    <div class="card-header">
+                        <h3><i class="fas fa-users me-2"></i>Contactos</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="contactos-list">
+                            <div class="contacto-item" data-contact="administracion">
+                                <div class="contacto-avatar admin">
+                                    <i class="fas fa-user-tie"></i>
+                                </div>
+                                <div class="contacto-info">
+                                    <h6>Administración</h6>
+                                    <p>Gestión del edificio</p>
+                                </div>
+                                <span class="contacto-status online"></span>
+                            </div>
+                            <div class="contacto-item" data-contact="seguridad">
+                                <div class="contacto-avatar security">
+                                    <i class="fas fa-shield-alt"></i>
+                                </div>
+                                <div class="contacto-info">
+                                    <h6>Seguridad</h6>
+                                    <p>Control de acceso</p>
+                                </div>
+                                <span class="contacto-status online"></span>
+                            </div>
+                            <div class="contacto-item" data-contact="mantenimiento">
+                                <div class="contacto-avatar maintenance">
+                                    <i class="fas fa-tools"></i>
+                                </div>
+                                <div class="contacto-info">
+                                    <h6>Mantenimiento</h6>
+                                    <p>Reparaciones y servicios</p>
+                                </div>
+                                <span class="contacto-status away"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Área de Chat -->
+            <div class="col-lg-8">
+                <div class="card chat-card">
+                    <div class="card-header chat-header">
+                        <div class="chat-partner-info">
+                            <div class="partner-avatar" id="partnerAvatar">
+                                <i class="fas fa-user-tie"></i>
+                            </div>
+                            <div class="partner-details">
+                                <h5 id="partnerName">Selecciona una conversación</h5>
+                                <p id="partnerStatus" class="text-muted">Haz clic en una conversación para empezar a chatear</p>
+                            </div>
+                        </div>
+                        <div class="chat-actions">
+                            <button class="btn btn-sm btn-outline-secondary" id="chatInfoBtn" disabled>
+                                <i class="fas fa-info-circle"></i>
+                            </button>
+                            <button class="btn btn-sm btn-outline-danger" id="clearChatBtn" disabled>
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="card-body chat-body">
+                        <div class="chat-messages" id="chatMessages">
+                            <!-- Mensajes se cargan aquí -->
+                            <div class="welcome-message">
+                                <i class="fas fa-comments fa-3x text-muted mb-3"></i>
+                                <h4>Bienvenido al Centro de Mensajes</h4>
+                                <p class="text-muted">Selecciona una conversación de la lista para empezar a chatear</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card-footer chat-footer">
+                        <form id="messageForm" class="d-none">
+                            <div class="input-group">
+                                <button type="button" class="btn btn-outline-secondary" id="attachBtn">
+                                    <i class="fas fa-paperclip"></i>
+                                </button>
+                                <input type="text" class="form-control" id="messageInput" placeholder="Escribe tu mensaje..." disabled>
+                                <button type="submit" class="btn btn-primary" id="sendBtn" disabled>
+                                    <i class="fas fa-paper-plane"></i>
+                                </button>
+                            </div>
+                            <div class="form-text text-muted mt-2">
+                                <small>Presiona Enter para enviar. Shift+Enter para nueva línea.</small>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Información de la Conversación -->
+                <div class="card mt-4 d-none" id="chatInfoCard">
+                    <div class="card-header">
+                        <h3><i class="fas fa-info-circle me-2"></i>Información de la Conversación</h3>
+                    </div>
+                    <div class="card-body">
+                        <div id="chatInfoContent">
+                            <!-- La información se carga dinámicamente -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Modal Nuevo Mensaje -->
+    <div class="modal fade" id="nuevoMensajeModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Nuevo Mensaje</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="nuevoMensajeForm">
+                        <div class="mb-3">
+                            <label class="form-label">Para</label>
+                            <select class="form-select" id="messageTo" required>
+                                <option value="">Seleccionar destinatario</option>
+                                <optgroup label="Administración">
+                                    <option value="administracion">Administración General</option>
+                                    <option value="contabilidad">Departamento Contable</option>
+                                    <option value="coordinacion">Coordinación de Servicios</option>
+                                </optgroup>
+                                <optgroup label="Servicios">
+                                    <option value="seguridad">Seguridad</option>
+                                    <option value="mantenimiento">Mantenimiento</option>
+                                    <option value="limpieza">Limpieza</option>
+                                </optgroup>
+                                <optgroup label="Residentes">
+                                    <option value="consejo">Consejo de Residentes</option>
+                                    <option value="vecino">Vecino Específico</option>
+                                </optgroup>
+                            </select>
+                        </div>
+                        <div class="mb-3" id="vecinoSelector" style="display: none;">
+                            <label class="form-label">Seleccionar Vecino</label>
+                            <select class="form-select" id="vecinoSelect">
+                                <option value="">Seleccionar vecino</option>
+                                <option value="301">Apartamento 301 - María González</option>
+                                <option value="303">Apartamento 303 - Carlos López</option>
+                                <option value="401">Apartamento 401 - Ana Martínez</option>
+                                <option value="402">Apartamento 402 - Roberto Díaz</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Asunto</label>
+                            <input type="text" class="form-control" id="messageSubject" placeholder="Asunto del mensaje" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Mensaje</label>
+                            <textarea class="form-control" id="messageContent" rows="6" placeholder="Escribe tu mensaje aquí..." required></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Prioridad</label>
+                            <select class="form-select" id="messagePriority">
+                                <option value="normal">Normal</option>
+                                <option value="alta">Alta</option>
+                                <option value="urgente">Urgente</option>
+                            </select>
+                        </div>
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="messageCopy">
+                            <label class="form-check-label" for="messageCopy">
+                                Enviar copia a mi correo
+                            </label>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" id="sendNewMessageBtn">
+                        <i class="fas fa-paper-plane"></i>
+                        Enviar Mensaje
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Adjuntar Archivo -->
+    <div class="modal fade" id="attachModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Adjuntar Archivo</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="file-upload-area">
+                        <i class="fas fa-cloud-upload-alt fa-3x text-muted mb-3"></i>
+                        <h5>Arrastra y suelta archivos aquí</h5>
+                        <p class="text-muted">o</p>
+                        <input type="file" class="d-none" id="fileInput" multiple>
+                        <button type="button" class="btn btn-outline-primary" onclick="document.getElementById('fileInput').click()">
+                            <i class="fas fa-folder-open"></i>
+                            Seleccionar Archivos
+                        </button>
+                        <div class="file-list mt-3" id="fileList"></div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" id="confirmAttachBtn">Adjuntar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/dashboard.js"></script>
+    <script src="js/mensajes.js"></script>
+</body>
+</html>

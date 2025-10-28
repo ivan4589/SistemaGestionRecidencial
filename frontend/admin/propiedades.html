@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Propiedades - Admin Lux</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <!--<link rel="stylesheet" href="../css/styles.css">-->
+    <link rel="stylesheet" href="css/admin.css">
+    <link rel="stylesheet" href="css/propiedades.css">
+</head>
+<body class="admin-body">
+    <!-- Sidebar Navigation -->
+    <nav class="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">
+                <i class="fas fa-building"></i>
+                <span>Residencias Lux</span>
+                <small class="admin-badge">Admin</small>
+            </div>
+        </div>
+        
+        <ul class="sidebar-nav">
+            <li class="nav-item">
+                <a href="index.html" class="nav-link">
+                    <i class="fas fa-tachometer-alt"></i>
+                    <span>Dashboard</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="residentes.html" class="nav-link">
+                    <i class="fas fa-users"></i>
+                    <span>Residentes</span>
+                </a>
+            </li>
+            <li class="nav-item active">
+                <a href="propiedades.html" class="nav-link">
+                    <i class="fas fa-home"></i>
+                    <span>Propiedades</span>
+                    <span class="badge bg-success">36</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="finanzas.html" class="nav-link">
+                    <i class="fas fa-chart-line"></i>
+                    <span>Finanzas</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="reportes.html" class="nav-link">
+                    <i class="fas fa-chart-bar"></i>
+                    <span>Reportes</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="configuracion.html" class="nav-link">
+                    <i class="fas fa-cogs"></i>
+                    <span>Configuración</span>
+                </a>
+            </li>
+        </ul>
+        
+        <div class="sidebar-footer">
+            <div class="user-info">
+                <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Admin" class="user-avatar">
+                <div class="user-details">
+                    <span class="user-name">Admin Lux</span>
+                    <span class="user-role">Administrador General</span>
+                </div>
+            </div>
+            <a href="../index.html" class="logout-btn">
+                <i class="fas fa-sign-out-alt"></i>
+                Cerrar Sesión
+            </a>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <header class="content-header">
+            <div>
+                <h1>Gestión de Propiedades</h1>
+                <p class="text-muted">Administra departamentos, áreas comunes y estados de propiedades</p>
+            </div>
+            <div class="header-actions">
+                <div class="btn-group">
+                    <button class="btn btn-primary" id="nuevaPropiedadBtn">
+                        <i class="fas fa-plus"></i>
+                        Nueva Propiedad
+                    </button>
+                    <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown">
+                        <span class="visually-hidden">Toggle Dropdown</span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#" onclick="propiedadesManager.openNuevaAreaComun()">
+                            <i class="fas fa-swimming-pool"></i> Nueva Área Común
+                        </a></li>
+                        <li><a class="dropdown-item" href="#" onclick="propiedadesManager.openNuevoDepartamento()">
+                            <i class="fas fa-door-open"></i> Nuevo Departamento
+                        </a></li>
+                    </ul>
+                </div>
+                <button class="btn btn-outline-primary ms-2">
+                    <i class="fas fa-download"></i>
+                    Exportar
+                </button>
+            </div>
+        </header>
+
+        <!-- Pestañas de Navegación -->
+        <ul class="nav nav-tabs mb-4" id="propiedadesTabs" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="departamentos-tab" data-bs-toggle="tab" data-bs-target="#departamentos" type="button">
+                    <i class="fas fa-door-open me-2"></i>Departamentos
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="areas-comunes-tab" data-bs-toggle="tab" data-bs-target="#areas-comunes" type="button">
+                    <i class="fas fa-swimming-pool me-2"></i>Áreas Comunes
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="mapa-tab" data-bs-toggle="tab" data-bs-target="#mapa" type="button">
+                    <i class="fas fa-map me-2"></i>Mapa del Edificio
+                </button>
+            </li>
+        </ul>
+
+        <!-- Contenido de Pestañas -->
+        <div class="tab-content" id="propiedadesTabContent">
+            <!-- Pestaña Departamentos -->
+            <div class="tab-pane fade show active" id="departamentos" role="tabpanel">
+                <!-- Filtros y Búsqueda -->
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <div class="row g-3">
+                            <div class="col-md-3">
+                                <label class="form-label">Buscar</label>
+                                <div class="input-group">
+                                    <span class="input-group-text">
+                                        <i class="fas fa-search"></i>
+                                    </span>
+                                    <input type="text" class="form-control" id="searchDepartamentos" placeholder="Número, torre, residente...">
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <label class="form-label">Torre</label>
+                                <select class="form-select" id="filterTorre">
+                                    <option value="">Todas</option>
+                                    <option value="A">Torre A</option>
+                                    <option value="B">Torre B</option>
+                                    <option value="C">Torre C</option>
+                                </select>
+                            </div>
+                            <div class="col-md-2">
+                                <label class="form-label">Estado</label>
+                                <select class="form-select" id="filterEstado">
+                                    <option value="">Todos</option>
+                                    <option value="ocupado">Ocupado</option>
+                                    <option value="disponible">Disponible</option>
+                                    <option value="mantenimiento">Mantenimiento</option>
+                                </select>
+                            </div>
+                            <div class="col-md-2">
+                                <label class="form-label">Tipo</label>
+                                <select class="form-select" id="filterTipo">
+                                    <option value="">Todos</option>
+                                    <option value="estudio">Estudio</option>
+                                    <option value="1-dorm">1 Dormitorio</option>
+                                    <option value="2-dorm">2 Dormitorios</option>
+                                    <option value="3-dorm">3 Dormitorios</option>
+                                    <option value="penthouse">Penthouse</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3">
+                                <label class="form-label">Acciones</label>
+                                <div class="d-grid gap-2">
+                                    <button class="btn btn-outline-primary" id="aplicarFiltros">
+                                        <i class="fas fa-filter"></i>
+                                        Aplicar Filtros
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Estadísticas de Departamentos -->
+                <div class="row mb-4">
+                    <div class="col-xl-2 col-md-4">
+                        <div class="stat-card mini">
+                            <div class="stat-icon bg-primary">
+                                <i class="fas fa-building"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h3>36</h3>
+                                <p>Total Deptos</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-2 col-md-4">
+                        <div class="stat-card mini">
+                            <div class="stat-icon bg-success">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h3>24</h3>
+                                <p>Ocupados</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-2 col-md-4">
+                        <div class="stat-card mini">
+                            <div class="stat-icon bg-warning">
+                                <i class="fas fa-home"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h3>8</h3>
+                                <p>Disponibles</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-2 col-md-4">
+                        <div class="stat-card mini">
+                            <div class="stat-icon bg-danger">
+                                <i class="fas fa-tools"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h3>4</h3>
+                                <p>Mantenimiento</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-2 col-md-4">
+                        <div class="stat-card mini">
+                            <div class="stat-icon bg-info">
+                                <i class="fas fa-dollar-sign"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h3>$45,600</h3>
+                                <p>Ingreso Mensual</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-2 col-md-4">
+                        <div class="stat-card mini">
+                            <div class="stat-icon bg-secondary">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h3>67%</h3>
+                                <p>Ocupación</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Lista de Departamentos -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-list me-2"></i>Lista de Departamentos</h3>
+                        <div class="header-info">
+                            <span class="text-muted">Mostrando <strong id="deptoCount">36</strong> departamentos</span>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-hover" id="departamentosTable">
+                                <thead>
+                                    <tr>
+                                        <th>Departamento</th>
+                                        <th>Residente</th>
+                                        <th>Tipo</th>
+                                        <th>Área</th>
+                                        <th>Alquiler</th>
+                                        <th>Estado</th>
+                                        <th>Último Mant.</th>
+                                        <th>Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="departamentosTableBody">
+                                    <!-- Los departamentos se cargan con JavaScript -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pestaña Áreas Comunes -->
+            <div class="tab-pane fade" id="areas-comunes" role="tabpanel">
+                <!-- Estadísticas de Áreas Comunes -->
+                <div class="row mb-4">
+                    <div class="col-md-3">
+                        <div class="stat-card mini">
+                            <div class="stat-icon bg-primary">
+                                <i class="fas fa-swimming-pool"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h3>12</h3>
+                                <p>Áreas Comunes</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="stat-card mini">
+                            <div class="stat-icon bg-success">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h3>8</h3>
+                                <p>Disponibles</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="stat-card mini">
+                            <div class="stat-icon bg-warning">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h3>3</h3>
+                                <p>Reservadas</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="stat-card mini">
+                            <div class="stat-icon bg-danger">
+                                <i class="fas fa-tools"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h3>1</h3>
+                                <p>Mantenimiento</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Grid de Áreas Comunes -->
+                <div class="row" id="areasComunesGrid">
+                    <!-- Las áreas comunes se cargan con JavaScript -->
+                </div>
+            </div>
+
+            <!-- Pestaña Mapa del Edificio -->
+            <div class="tab-pane fade" id="mapa" role="tabpanel">
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-map me-2"></i>Mapa del Edificio</h3>
+                        <div class="btn-group">
+                            <button class="btn btn-outline-primary btn-sm" onclick="propiedadesManager.cambiarVistaMapa('torre-a')">
+                                Torre A
+                            </button>
+                            <button class="btn btn-outline-primary btn-sm" onclick="propiedadesManager.cambiarVistaMapa('torre-b')">
+                                Torre B
+                            </button>
+                            <button class="btn btn-outline-primary btn-sm" onclick="propiedadesManager.cambiarVistaMapa('torre-c')">
+                                Torre C
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="building-map" id="buildingMap">
+                            <!-- Mapa se genera con JavaScript -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Modal Nueva Propiedad -->
+    <div class="modal fade" id="propiedadModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalTitle">Nueva Propiedad</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="propiedadForm">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Tipo de Propiedad *</label>
+                                    <select class="form-select" id="propiedadTipo" required>
+                                        <option value="">Seleccionar tipo</option>
+                                        <option value="departamento">Departamento</option>
+                                        <option value="area-comun">Área Común</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Nombre/Identificador *</label>
+                                    <input type="text" class="form-control" id="propiedadNombre" required>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Campos para Departamento -->
+                        <div id="camposDepartamento">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="mb-3">
+                                        <label class="form-label">Torre *</label>
+                                        <select class="form-select" id="propiedadTorre" required>
+                                            <option value="">Seleccionar</option>
+                                            <option value="A">Torre A</option>
+                                            <option value="B">Torre B</option>
+                                            <option value="C">Torre C</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="mb-3">
+                                        <label class="form-label">Número *</label>
+                                        <input type="text" class="form-control" id="propiedadNumero" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="mb-3">
+                                        <label class="form-label">Piso *</label>
+                                        <input type="number" class="form-control" id="propiedadPiso" min="1" max="30" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label">Tipo de Departamento</label>
+                                        <select class="form-select" id="propiedadTipoDepto">
+                                            <option value="estudio">Estudio</option>
+                                            <option value="1-dorm">1 Dormitorio</option>
+                                            <option value="2-dorm">2 Dormitorios</option>
+                                            <option value="3-dorm">3 Dormitorios</option>
+                                            <option value="penthouse">Penthouse</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label">Área (m²) *</label>
+                                        <input type="number" class="form-control" id="propiedadArea" step="0.1" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label">Alquiler Mensual</label>
+                                        <div class="input-group">
+                                            <span class="input-group-text">$</span>
+                                            <input type="number" class="form-control" id="propiedadAlquiler" step="0.01">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label">Depósito</label>
+                                        <div class="input-group">
+                                            <span class="input-group-text">$</span>
+                                            <input type="number" class="form-control" id="propiedadDeposito" step="0.01">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Campos para Área Común -->
+                        <div id="camposAreaComun" style="display: none;">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label">Ubicación *</label>
+                                        <select class="form-select" id="areaUbicacion" required>
+                                            <option value="">Seleccionar</option>
+                                            <option value="piso-1">Piso 1</option>
+                                            <option value="piso-2">Piso 2</option>
+                                            <option value="azotea">Azotea</option>
+                                            <option value="subsuelo">Subsuelo</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label">Capacidad Máxima</label>
+                                        <input type="number" class="form-control" id="areaCapacidad" min="1">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Horario de Uso</label>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <input type="text" class="form-control" id="areaHorarioInicio" placeholder="Hora inicio (ej: 08:00)">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input type="text" class="form-control" id="areaHorarioFin" placeholder="Hora fin (ej: 22:00)">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Campos Comunes -->
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Estado *</label>
+                                    <select class="form-select" id="propiedadEstado" required>
+                                        <option value="disponible">Disponible</option>
+                                        <option value="ocupado">Ocupado</option>
+                                        <option value="mantenimiento">En Mantenimiento</option>
+                                        <option value="reservado">Reservado</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Residente Asignado</label>
+                                    <select class="form-select" id="propiedadResidente">
+                                        <option value="">Sin asignar</option>
+                                        <!-- Se llena dinámicamente -->
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Características</label>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="caracParqueo">
+                                        <label class="form-check-label" for="caracParqueo">
+                                            Parqueo incluido
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="caracMascotas">
+                                        <label class="form-check-label" for="caracMascotas">
+                                            Permite mascotas
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="caracBalcon">
+                                        <label class="form-check-label" for="caracBalcon">
+                                            Balcón/Terraza
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="caracAmueblado">
+                                        <label class="form-check-label" for="caracAmueblado">
+                                            Amueblado
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="caracLavanderia">
+                                        <label class="form-check-label" for="caracLavanderia">
+                                            Lavandería
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="caracAC">
+                                        <label class="form-check-label" for="caracAC">
+                                            Aire Acondicionado
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Descripción</label>
+                            <textarea class="form-control" id="propiedadDescripcion" rows="3"></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" id="guardarPropiedadBtn">Guardar Propiedad</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Ver Propiedad -->
+    <div class="modal fade" id="verPropiedadModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Detalles de la Propiedad</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="verPropiedadContent">
+                        <!-- Contenido dinámico -->
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-primary" id="editarDesdeVerBtn">Editar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Programar Mantenimiento -->
+    <div class="modal fade" id="mantenimientoModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Programar Mantenimiento</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="mantenimientoForm">
+                        <div class="mb-3">
+                            <label class="form-label">Propiedad</label>
+                            <input type="text" class="form-control" id="mantPropiedad" readonly>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Tipo de Mantenimiento *</label>
+                            <select class="form-select" id="mantTipo" required>
+                                <option value="">Seleccionar</option>
+                                <option value="preventivo">Preventivo</option>
+                                <option value="correctivo">Correctivo</option>
+                                <option value="emergencia">Emergencia</option>
+                                <option value="limpieza">Limpieza Profunda</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Fecha Programada *</label>
+                            <input type="text" class="form-control" id="mantFecha" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Descripción *</label>
+                            <textarea class="form-control" id="mantDescripcion" rows="3" required></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Técnico Responsable</label>
+                            <input type="text" class="form-control" id="mantTecnico">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" id="programarMantenimientoBtn">Programar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/es.js"></script>
+    <script src="js/admin.js"></script>
+    <script src="js/propiedades.js"></script>
+</body>
+</html>

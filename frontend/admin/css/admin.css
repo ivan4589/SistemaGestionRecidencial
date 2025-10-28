@@ -1,0 +1,555 @@
+/* Estilos específicos para el panel administrativo */
+
+.admin-body {
+    background-color: #f8f9fa;
+    display: flex;
+    min-height: 100vh;
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Sidebar Admin */
+.sidebar {
+    width: 280px;
+    background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+    color: white;
+    box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+    position: fixed;
+    height: 100vh;
+    overflow-y: auto;
+    z-index: 1000;
+}
+
+.sidebar-header {
+    padding: 30px 25px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.sidebar-header .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: white;
+    position: relative;
+}
+
+.admin-badge {
+    background: var(--accent-color);
+    color: white;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    position: absolute;
+    top: -5px;
+    right: -35px;
+}
+
+.sidebar-nav {
+    list-style: none;
+    padding: 20px 0;
+    margin: 0;
+}
+
+.sidebar-nav .nav-item {
+    margin: 5px 15px;
+}
+
+.sidebar-nav .nav-link {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px 20px;
+    color: rgba(255,255,255,0.8);
+    text-decoration: none;
+    border-radius: 10px;
+    transition: all 0.3s;
+    position: relative;
+}
+
+.sidebar-nav .nav-link:hover,
+.sidebar-nav .nav-link.active {
+    background: rgba(255,255,255,0.1);
+    color: white;
+    transform: translateX(5px);
+}
+
+.sidebar-nav .nav-link .badge {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.sidebar-footer {
+    padding: 20px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background: rgba(0,0,0,0.1);
+}
+
+/* Main Content Admin */
+.main-content {
+    flex: 1;
+    margin-left: 280px;
+    padding: 30px;
+}
+
+/* Estadísticas Mejoradas */
+.quick-stats {
+    margin-bottom: 30px;
+}
+
+.stat-card {
+    background: white;
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    transition: transform 0.3s;
+    border-left: 4px solid transparent;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+}
+
+.stat-card.bg-primary { border-left-color: var(--secondary-color); }
+.stat-card.bg-success { border-left-color: var(--success-color); }
+.stat-card.bg-warning { border-left-color: var(--warning-color); }
+.stat-card.bg-danger { border-left-color: var(--danger-color); }
+
+.stat-icon {
+    width: 70px;
+    height: 70px;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.8rem;
+}
+
+.stat-info {
+    flex: 1;
+}
+
+.stat-info h3 {
+    margin: 0;
+    font-size: 2rem;
+    color: var(--primary-color);
+    font-weight: 700;
+}
+
+.stat-info p {
+    margin: 5px 0;
+    color: #666;
+    font-size: 0.95rem;
+}
+
+.stat-trend {
+    font-size: 0.85rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.stat-trend.positive {
+    color: var(--success-color);
+}
+
+.stat-trend.negative {
+    color: var(--danger-color);
+}
+
+/* Tarjetas de Gráficos */
+.card {
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    margin-bottom: 25px;
+}
+
+.card-header {
+    background: white;
+    border-bottom: 1px solid #eee;
+    padding: 20px 25px;
+    border-radius: 15px 15px 0 0 !important;
+    display: flex;
+    justify-content: between;
+    align-items: center;
+}
+
+.card-header h3 {
+    margin: 0;
+    font-size: 1.3rem;
+    color: var(--primary-color);
+    flex: 1;
+}
+
+.card-body {
+    padding: 25px;
+}
+
+/* Lista de Actividad */
+.activity-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.activity-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 10px;
+    transition: all 0.3s;
+}
+
+.activity-item:hover {
+    background: #e9ecef;
+    transform: translateX(5px);
+}
+
+.activity-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+}
+
+.activity-icon.success { background: var(--success-color); }
+.activity-icon.warning { background: var(--warning-color); }
+.activity-icon.primary { background: var(--secondary-color); }
+.activity-icon.danger { background: var(--danger-color); }
+.activity-icon.info { background: var(--primary-color); }
+
+.activity-content {
+    flex: 1;
+}
+
+.activity-content h6 {
+    margin: 0;
+    color: var(--primary-color);
+    font-size: 0.95rem;
+}
+
+.activity-content p {
+    margin: 5px 0;
+    color: #666;
+    font-size: 0.85rem;
+}
+
+.activity-time {
+    font-size: 0.75rem;
+    color: #999;
+}
+
+/* Lista de Alertas */
+.alerts-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.alert-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 15px;
+    border-radius: 10px;
+    border-left: 4px solid;
+}
+
+.alert-item.danger {
+    background: #f8d7da;
+    border-left-color: var(--danger-color);
+    color: #721c24;
+}
+
+.alert-item.warning {
+    background: #fff3cd;
+    border-left-color: var(--warning-color);
+    color: #856404;
+}
+
+.alert-item.info {
+    background: #cce7ff;
+    border-left-color: var(--secondary-color);
+    color: #004085;
+}
+
+.alert-item i {
+    font-size: 1.2rem;
+    flex-shrink: 0;
+}
+
+.alert-item div {
+    flex: 1;
+}
+
+.alert-item h6 {
+    margin: 0;
+    font-size: 0.95rem;
+}
+
+.alert-item p {
+    margin: 2px 0 0;
+    font-size: 0.85rem;
+}
+
+.alert-item .btn {
+    flex-shrink: 0;
+    font-size: 0.8rem;
+}
+
+/* Acciones Rápidas */
+.quick-actions-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+
+.action-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 15px 10px;
+    background: #f8f9fa;
+    border: 2px solid transparent;
+    border-radius: 10px;
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: all 0.3s;
+    text-align: center;
+}
+
+.action-btn:hover {
+    background: var(--secondary-color);
+    color: white;
+    border-color: var(--secondary-color);
+    transform: translateY(-2px);
+}
+
+.action-btn i {
+    font-size: 1.5rem;
+}
+
+.action-btn span {
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+/* Tablas Mejoradas */
+.table-responsive {
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.table {
+    margin: 0;
+}
+
+.table thead th {
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 15px 12px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.table tbody tr {
+    transition: all 0.3s;
+}
+
+.table tbody tr:hover {
+    background: #f8f9fa;
+}
+
+.table tbody td {
+    padding: 12px;
+    vertical-align: middle;
+    border-color: #f0f0f0;
+    font-size: 0.9rem;
+}
+
+.user-cell {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.user-avatar-sm {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.user-cell strong {
+    display: block;
+    color: var(--primary-color);
+    font-size: 0.95rem;
+}
+
+.user-cell small {
+    font-size: 0.8rem;
+}
+
+/* Badges Mejorados */
+.badge {
+    padding: 6px 10px;
+    border-radius: 8px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+/* Gráficos */
+canvas {
+    max-width: 100%;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .sidebar {
+        transform: translateX(-100%);
+        transition: transform 0.3s;
+    }
+    
+    .sidebar.mobile-open {
+        transform: translateX(0);
+    }
+    
+    .main-content {
+        margin-left: 0;
+        padding: 20px;
+    }
+    
+    .quick-stats .col-xl-3 {
+        margin-bottom: 15px;
+    }
+    
+    .stat-card {
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+    }
+    
+    .quick-actions-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .activity-item {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+    }
+    
+    .alert-item {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+    }
+    
+    .table-responsive {
+        font-size: 0.85rem;
+    }
+}
+
+/* Animaciones */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.stat-card {
+    animation: fadeInUp 0.6s ease forwards;
+}
+
+.stat-card:nth-child(1) { animation-delay: 0.1s; }
+.stat-card:nth-child(2) { animation-delay: 0.2s; }
+.stat-card:nth-child(3) { animation-delay: 0.3s; }
+.stat-card:nth-child(4) { animation-delay: 0.4s; }
+
+.activity-item {
+    animation: fadeInUp 0.5s ease forwards;
+}
+
+.alert-item {
+    animation: fadeInUp 0.5s ease forwards;
+}
+
+/* Modo Oscuro (Opcional) */
+@media (prefers-color-scheme: dark) {
+    .admin-body {
+        background: #1a1a1a;
+        color: white;
+    }
+    
+    .card {
+        background: #2d3748;
+        color: white;
+    }
+    
+    .card-header {
+        background: #2d3748;
+        border-bottom-color: #4a5568;
+    }
+    
+    .stat-card {
+        background: #2d3748;
+        color: white;
+    }
+    
+    .activity-item {
+        background: #4a5568;
+    }
+}
+
+/* Loading States */
+.loading {
+    opacity: 0.6;
+    pointer-events: none;
+    position: relative;
+}
+
+.loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 20px;
+    height: 20px;
+    border: 2px solid #f3f3f3;
+    border-top: 2px solid var(--secondary-color);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    100% { transform: translate(-50%, -50%) rotate(360deg); }
+}

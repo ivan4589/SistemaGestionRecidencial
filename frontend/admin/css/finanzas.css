@@ -1,0 +1,480 @@
+/* finanzas.css - Estilos específicos para gestión financiera */
+
+/* Estadísticas financieras mejoradas */
+.quick-stats .stat-card {
+    padding: 1.25rem;
+    border: 1px solid #e9ecef;
+    border-radius: 0.75rem;
+    background: white;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.quick-stats .stat-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+}
+
+.quick-stats .stat-card .stat-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 0.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+.quick-stats .stat-card .stat-info h3 {
+    margin: 0;
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #2c3e50;
+}
+
+.quick-stats .stat-card .stat-info p {
+    margin: 0.5rem 0 0 0;
+    color: #6c757d;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.quick-stats .stat-card .stat-trend {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 0.25rem 0.5rem;
+    border-radius: 1rem;
+}
+
+.stat-trend.positive {
+    background: rgba(40, 167, 69, 0.1);
+    color: #28a745;
+}
+
+.stat-trend.negative {
+    background: rgba(220, 53, 69, 0.1);
+    color: #dc3545;
+}
+
+/* Estados de pago */
+.estado-pago {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    border-radius: 2rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.estado-pago.pagado {
+    background: rgba(40, 167, 69, 0.1);
+    color: #28a745;
+    border: 1px solid rgba(40, 167, 69, 0.2);
+}
+
+.estado-pago.pendiente {
+    background: rgba(255, 193, 7, 0.1);
+    color: #ffc107;
+    border: 1px solid rgba(255, 193, 7, 0.2);
+}
+
+.estado-pago.vencido {
+    background: rgba(220, 53, 69, 0.1);
+    color: #dc3545;
+    border: 1px solid rgba(220, 53, 69, 0.2);
+}
+
+.estado-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.estado-pago.pagado .estado-dot { background-color: #28a745; }
+.estado-pago.pendiente .estado-dot { background-color: #ffc107; }
+.estado-pago.vencido .estado-dot { background-color: #dc3545; }
+
+/* Métodos de pago */
+.metodo-pago {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.375rem 0.75rem;
+    background: #f8f9fa;
+    border-radius: 0.375rem;
+    font-size: 0.875rem;
+    color: #495057;
+}
+
+/* Tablas financieras */
+.table-finanzas th {
+    background: #f8f9fa;
+    font-weight: 600;
+    color: #495057;
+    border-bottom: 2px solid #dee2e6;
+    padding: 1rem 0.75rem;
+}
+
+.table-finanzas td {
+    padding: 1rem 0.75rem;
+    vertical-align: middle;
+}
+
+.table-finanzas tbody tr {
+    transition: all 0.2s ease;
+}
+
+.table-finanzas tbody tr:hover {
+    background: #f8f9fa;
+    transform: scale(1.01);
+}
+
+/* Resultados financieros */
+.resultados-financieros {
+    padding: 1rem 0;
+}
+
+.resultado-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.resultado-item:last-child {
+    border-bottom: none;
+}
+
+.resultado-total {
+    background: #f8f9fa;
+    margin: 0 -1rem;
+    padding: 1.5rem 1rem;
+    border-radius: 0.5rem;
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+
+.resultado-meta {
+    text-align: center;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px dashed #dee2e6;
+}
+
+/* Métricas clave */
+.metricas-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.metrica-card {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background: #f8f9fa;
+    border-radius: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.metrica-card:hover {
+    background: #e9ecef;
+    transform: translateY(-2px);
+}
+
+.metrica-card i {
+    font-size: 1.5rem;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: white;
+    border-radius: 0.5rem;
+}
+
+.metrica-card div {
+    flex: 1;
+}
+
+.metrica-card strong {
+    display: block;
+    font-size: 1.25rem;
+    color: #2c3e50;
+}
+
+.metrica-card small {
+    color: #6c757d;
+    font-size: 0.875rem;
+}
+
+/* Tarjetas de reporte */
+.reporte-card {
+    border: 1px solid #e9ecef;
+    border-radius: 0.75rem;
+    transition: all 0.3s ease;
+    height: 100%;
+}
+
+.reporte-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    border-color: #0d6efd;
+}
+
+.reporte-card .card-body {
+    padding: 2rem 1.5rem;
+}
+
+.reporte-card i {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.reporte-card h5 {
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+}
+
+.reporte-card p {
+    color: #6c757d;
+    margin-bottom: 1.5rem;
+}
+
+/* Presupuesto */
+.presupuesto-estado {
+    padding: 1rem 0;
+}
+
+.presupuesto-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.presupuesto-item:last-child {
+    border-bottom: none;
+}
+
+.progress {
+    height: 8px;
+    border-radius: 4px;
+}
+
+.progress-bar {
+    border-radius: 4px;
+    font-size: 0.7rem;
+    font-weight: 600;
+}
+
+/* Gráficos */
+.chart-container {
+    position: relative;
+    height: 250px;
+    width: 100%;
+}
+
+/* Badges financieros */
+.badge-financiero {
+    font-size: 0.75rem;
+    padding: 0.375rem 0.75rem;
+    border-radius: 1rem;
+    font-weight: 600;
+}
+
+.badge-ingreso { background: rgba(40, 167, 69, 0.1); color: #28a745; }
+.badge-gasto { background: rgba(220, 53, 69, 0.1); color: #dc3545; }
+.badge-presupuesto { background: rgba(255, 193, 7, 0.1); color: #ffc107; }
+
+/* Filtros avanzados */
+.filter-group {
+    background: #f8f9fa;
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.filter-header {
+    display: flex;
+    justify-content: between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.filter-title {
+    font-weight: 600;
+    color: #495057;
+    margin: 0;
+}
+
+/* Modal enhancements */
+.modal-finanzas .modal-header {
+    background: #f8f9fa;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.modal-finanzas .modal-footer {
+    background: #f8f9fa;
+    border-top: 1px solid #dee2e6;
+}
+
+/* Animaciones */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+.pulse {
+    animation: pulse 2s infinite;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.slide-in {
+    animation: slideIn 0.3s ease-out;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .quick-stats .col-xl-2 {
+        margin-bottom: 1rem;
+    }
+    
+    .metricas-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .table-finanzas {
+        font-size: 0.875rem;
+    }
+    
+    .estado-pago {
+        font-size: 0.75rem;
+        padding: 0.375rem 0.75rem;
+    }
+    
+    .reporte-card .card-body {
+        padding: 1.5rem 1rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .filter-group .row {
+        margin: 0 -0.5rem;
+    }
+    
+    .filter-group .col-md-3,
+    .filter-group .col-md-2 {
+        padding: 0 0.5rem;
+        margin-bottom: 1rem;
+    }
+}
+
+/* Estados de presupuesto */
+.presupuesto-alerta {
+    padding: 0.75rem;
+    border-radius: 0.5rem;
+    margin: 0.5rem 0;
+    font-size: 0.875rem;
+}
+
+.presupuesto-alerta.success {
+    background: rgba(40, 167, 69, 0.1);
+    border: 1px solid rgba(40, 167, 69, 0.2);
+    color: #28a745;
+}
+
+.presupuesto-alerta.warning {
+    background: rgba(255, 193, 7, 0.1);
+    border: 1px solid rgba(255, 193, 7, 0.2);
+    color: #ffc107;
+}
+
+.presupuesto-alerta.danger {
+    background: rgba(220, 53, 69, 0.1);
+    border: 1px solid rgba(220, 53, 69, 0.2);
+    color: #dc3545;
+}
+
+/* Tooltips personalizados para datos financieros */
+.financial-tooltip {
+    position: relative;
+    cursor: help;
+}
+
+.financial-tooltip::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #2c3e50;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 0.375rem;
+    font-size: 0.875rem;
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.3s;
+    pointer-events: none;
+    z-index: 1000;
+}
+
+.financial-tooltip:hover::after {
+    opacity: 1;
+}
+
+/* Efectos de carga */
+.loading-finance {
+    opacity: 0.6;
+    pointer-events: none;
+    position: relative;
+}
+
+.loading-finance::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255,255,255,0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+}
+
+.loading-finance::after {
+    content: 'Cargando...';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 11;
+    color: #0d6efd;
+    font-weight: 600;
+}

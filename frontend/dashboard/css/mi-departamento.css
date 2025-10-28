@@ -1,0 +1,389 @@
+/* Estilos específicos para Mi Departamento */
+
+/* Información del Departamento */
+.dept-info-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 12px 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.dept-info-item:last-child {
+    border-bottom: none;
+}
+
+.dept-info-item i {
+    width: 20px;
+    text-align: center;
+    color: var(--secondary-color);
+}
+
+.dept-info-item strong {
+    display: block;
+    color: var(--primary-color);
+    font-size: 0.9rem;
+}
+
+.dept-info-item p {
+    margin: 5px 0 0;
+    color: #666;
+    font-size: 0.95rem;
+}
+
+/* Estado de Servicios */
+.service-status {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.service-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 12px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    transition: all 0.3s;
+}
+
+.service-item:hover {
+    background: #e9ecef;
+}
+
+.service-item i {
+    width: 20px;
+    text-align: center;
+    color: var(--secondary-color);
+}
+
+.service-item span:first-of-type {
+    flex: 1;
+    color: var(--primary-color);
+    font-weight: 500;
+}
+
+.status-badge {
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.status-badge.active {
+    background: #d4edda;
+    color: var(--success-color);
+}
+
+.status-badge.warning {
+    background: #fff3cd;
+    color: var(--warning-color);
+}
+
+/* Estado Financiero */
+.financial-summary {
+    margin-bottom: 30px;
+}
+
+.financial-item {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 10px;
+}
+
+.financial-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.5rem;
+}
+
+.financial-info {
+    flex: 1;
+}
+
+.financial-info h4 {
+    margin: 0;
+    color: var(--primary-color);
+}
+
+.financial-info p {
+    margin: 5px 0 0;
+    color: #666;
+}
+
+.financial-amount {
+    text-align: right;
+}
+
+.financial-amount .amount {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--success-color);
+}
+
+.financial-amount .label {
+    font-size: 0.85rem;
+    color: #666;
+}
+
+/* Lista de Pagos */
+.payments-section h5 {
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #f0f0f0;
+}
+
+.payments-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.payment-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    border-left: 4px solid #ddd;
+}
+
+.payment-item.paid {
+    border-left-color: var(--success-color);
+}
+
+.payment-item.pending {
+    border-left-color: var(--warning-color);
+}
+
+.payment-info h6 {
+    margin: 0;
+    color: var(--primary-color);
+    font-size: 0.95rem;
+}
+
+.payment-date {
+    font-size: 0.8rem;
+    color: #666;
+}
+
+.payment-amount {
+    text-align: right;
+}
+
+.payment-amount .amount {
+    display: block;
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+.payment-amount .status {
+    font-size: 0.75rem;
+    padding: 3px 8px;
+    border-radius: 10px;
+    font-weight: 600;
+}
+
+.status.paid {
+    background: #d4edda;
+    color: var(--success-color);
+}
+
+.status.pending {
+    background: #fff3cd;
+    color: var(--warning-color);
+}
+
+/* Solicitudes de Mantenimiento */
+.maintenance-actions {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.maintenance-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.maintenance-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 10px;
+    border-left: 4px solid #ddd;
+    transition: all 0.3s;
+}
+
+.maintenance-item:hover {
+    background: #e9ecef;
+    transform: translateX(5px);
+}
+
+.maintenance-icon {
+    width: 50px;
+    height: 50px;
+    background: var(--secondary-color);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.2rem;
+}
+
+.maintenance-details {
+    flex: 1;
+}
+
+.maintenance-details h6 {
+    margin: 0;
+    color: var(--primary-color);
+    font-size: 1rem;
+}
+
+.maintenance-details p {
+    margin: 5px 0;
+    color: #666;
+    font-size: 0.85rem;
+}
+
+.priority {
+    padding: 3px 8px;
+    border-radius: 8px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.priority.low {
+    background: #d1ecf1;
+    color: #0c5460;
+}
+
+.priority.medium {
+    background: #fff3cd;
+    color: #856404;
+}
+
+.priority.high {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.maintenance-status {
+    text-align: right;
+}
+
+.maintenance-status .status {
+    display: block;
+    padding: 5px 10px;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.status.pending {
+    background: #fff3cd;
+    color: var(--warning-color);
+}
+
+.status.in-progress {
+    background: #cce7ff;
+    color: var(--secondary-color);
+}
+
+.status.completed {
+    background: #d4edda;
+    color: var(--success-color);
+}
+
+/* Modal Styles */
+.modal-content {
+    border-radius: 15px;
+    border: none;
+}
+
+.modal-header {
+    border-bottom: 1px solid #eee;
+    padding: 25px 30px 15px;
+}
+
+.modal-body {
+    padding: 20px 30px;
+}
+
+.modal-footer {
+    border-top: 1px solid #eee;
+    padding: 20px 30px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .financial-item {
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+    }
+    
+    .payment-item {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+    }
+    
+    .maintenance-item {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .maintenance-status {
+        text-align: center;
+    }
+    
+    .dept-info-item {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+    }
+    
+    .service-item {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+    }
+}
+
+/* Animaciones */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.maintenance-item {
+    animation: fadeInUp 0.5s ease forwards;
+}
+
+.maintenance-item:nth-child(1) { animation-delay: 0.1s; }
+.maintenance-item:nth-child(2) { animation-delay: 0.2s; }
+.maintenance-item:nth-child(3) { animation-delay: 0.3s; }

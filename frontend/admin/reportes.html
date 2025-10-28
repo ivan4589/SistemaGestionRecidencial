@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reportes y Analytics - Admin Lux</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <!--<link rel="stylesheet" href="../css/styles.css">-->
+    <link rel="stylesheet" href="css/admin.css">
+    <link rel="stylesheet" href="css/reportes.css">
+</head>
+<body class="admin-body">
+    <!-- Sidebar Navigation -->
+    <nav class="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">
+                <i class="fas fa-building"></i>
+                <span>Residencias Lux</span>
+                <small class="admin-badge">Admin</small>
+            </div>
+        </div>
+        
+        <ul class="sidebar-nav">
+            <li class="nav-item">
+                <a href="index.html" class="nav-link">
+                    <i class="fas fa-tachometer-alt"></i>
+                    <span>Dashboard</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="residentes.html" class="nav-link">
+                    <i class="fas fa-users"></i>
+                    <span>Residentes</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="propiedades.html" class="nav-link">
+                    <i class="fas fa-home"></i>
+                    <span>Propiedades</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="finanzas.html" class="nav-link">
+                    <i class="fas fa-chart-line"></i>
+                    <span>Finanzas</span>
+                </a>
+            </li>
+            <li class="nav-item active">
+                <a href="reportes.html" class="nav-link">
+                    <i class="fas fa-chart-bar"></i>
+                    <span>Reportes</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="configuracion.html" class="nav-link">
+                    <i class="fas fa-cogs"></i>
+                    <span>Configuración</span>
+                </a>
+            </li>
+        </ul>
+        
+        <div class="sidebar-footer">
+            <div class="user-info">
+                <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Admin" class="user-avatar">
+                <div class="user-details">
+                    <span class="user-name">Admin Lux</span>
+                    <span class="user-role">Administrador General</span>
+                </div>
+            </div>
+            <a href="../index.html" class="logout-btn">
+                <i class="fas fa-sign-out-alt"></i>
+                Cerrar Sesión
+            </a>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <header class="content-header">
+            <div>
+                <h1>Reportes y Analytics</h1>
+                <p class="text-muted">Análisis detallado y reportes del sistema</p>
+            </div>
+            <div class="header-actions">
+                <div class="btn-group">
+                    <button class="btn btn-primary" id="generarReporteBtn">
+                        <i class="fas fa-plus"></i>
+                        Generar Reporte
+                    </button>
+                    <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown">
+                        <span class="visually-hidden">Toggle Dropdown</span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#" onclick="reportesManager.generarReporteMensual()">
+                            <i class="fas fa-calendar-alt"></i> Reporte Mensual
+                        </a></li>
+                        <li><a class="dropdown-item" href="#" onclick="reportesManager.generarReporteFinanciero()">
+                            <i class="fas fa-chart-line"></i> Reporte Financiero
+                        </a></li>
+                        <li><a class="dropdown-item" href="#" onclick="reportesManager.generarReporteOcupacion()">
+                            <i class="fas fa-home"></i> Reporte de Ocupación
+                        </a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="#" onclick="reportesManager.generarReportePersonalizado()">
+                            <i class="fas fa-cog"></i> Reporte Personalizado
+                        </a></li>
+                    </ul>
+                </div>
+                <button class="btn btn-outline-primary ms-2" id="exportarTodoBtn">
+                    <i class="fas fa-download"></i>
+                    Exportar Todo
+                </button>
+            </div>
+        </header>
+
+        <!-- Filtros de Reportes -->
+        <div class="card mb-4">
+            <div class="card-body">
+                <div class="row g-3 align-items-end">
+                    <div class="col-md-3">
+                        <label class="form-label">Rango de Fechas</label>
+                        <input type="text" class="form-control" id="fechaRange" placeholder="Seleccionar rango">
+                    </div>
+                    <div class="col-md-2">
+                        <label class="form-label">Tipo de Reporte</label>
+                        <select class="form-select" id="tipoReporte">
+                            <option value="completo">Completo</option>
+                            <option value="financiero">Financiero</option>
+                            <option value="ocupacion">Ocupación</option>
+                            <option value="mantenimiento">Mantenimiento</option>
+                        </select>
+                    </div>
+                    <div class="col-md-2">
+                        <label class="form-label">Formato</label>
+                        <select class="form-select" id="formatoReporte">
+                            <option value="pdf">PDF</option>
+                            <option value="excel">Excel</option>
+                            <option value="csv">CSV</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <label class="form-label">Filtrar por Torre</label>
+                        <select class="form-select" id="filtroTorre">
+                            <option value="">Todas las Torres</option>
+                            <option value="A">Torre A</option>
+                            <option value="B">Torre B</option>
+                            <option value="C">Torre C</option>
+                        </select>
+                    </div>
+                    <div class="col-md-2">
+                        <button class="btn btn-primary w-100" id="aplicarFiltrosReporte">
+                            <i class="fas fa-filter"></i>
+                            Aplicar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Métricas Principales -->
+        <div class="row mb-4">
+            <div class="col-xl-3 col-md-6">
+                <div class="metric-card primary">
+                    <div class="metric-icon">
+                        <i class="fas fa-dollar-sign"></i>
+                    </div>
+                    <div class="metric-info">
+                        <h3>$45,680</h3>
+                        <p>Ingresos del Mes</p>
+                        <span class="metric-trend positive">
+                            <i class="fas fa-arrow-up"></i> 8.2%
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-md-6">
+                <div class="metric-card success">
+                    <div class="metric-icon">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <div class="metric-info">
+                        <h3>66.7%</h3>
+                        <p>Tasa de Ocupación</p>
+                        <span class="metric-trend positive">
+                            <i class="fas fa-arrow-up"></i> 5.1%
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-md-6">
+                <div class="metric-card warning">
+                    <div class="metric-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <div class="metric-info">
+                        <h3>12</h3>
+                        <p>Solicitudes Mantenimiento</p>
+                        <span class="metric-trend negative">
+                            <i class="fas fa-arrow-down"></i> 15.3%
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-md-6">
+                <div class="metric-card info">
+                    <div class="metric-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="metric-info">
+                        <h3>95.2%</h3>
+                        <p>Satisfacción Residentes</p>
+                        <span class="metric-trend positive">
+                            <i class="fas fa-arrow-up"></i> 3.7%
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Gráficos Principales -->
+        <div class="row mb-4">
+            <div class="col-lg-8">
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-chart-line me-2"></i>Desempeño Financiero 2024</h3>
+                        <div class="card-actions">
+                            <button class="btn btn-sm btn-outline-primary" onclick="reportesManager.exportarGrafico('financiero')">
+                                <i class="fas fa-download"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <canvas id="desempenoChart" height="300"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-chart-pie me-2"></i>Distribución de Ingresos</h3>
+                    </div>
+                    <div class="card-body">
+                        <canvas id="distribucionIngresosChart" height="300"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Reportes Específicos -->
+        <div class="row mb-4">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-home me-2"></i>Ocupación por Torre</h3>
+                    </div>
+                    <div class="card-body">
+                        <canvas id="ocupacionTorreChart" height="250"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-tools me-2"></i>Tipos de Mantenimiento</h3>
+                    </div>
+                    <div class="card-body">
+                        <canvas id="mantenimientoChart" height="250"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Reportes Rápidos -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-bolt me-2"></i>Reportes Rápidos</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="row quick-reports-grid">
+                            <div class="col-xl-2 col-md-4 col-sm-6">
+                                <div class="quick-report-card" onclick="reportesManager.generarReporteRapido('pagos-pendientes')">
+                                    <div class="report-icon warning">
+                                        <i class="fas fa-clock"></i>
+                                    </div>
+                                    <div class="report-info">
+                                        <h4>5</h4>
+                                        <p>Pagos Pendientes</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-2 col-md-4 col-sm-6">
+                                <div class="quick-report-card" onclick="reportesManager.generarReporteRapido('mantenimiento-pendiente')">
+                                    <div class="report-icon danger">
+                                        <i class="fas fa-tools"></i>
+                                    </div>
+                                    <div class="report-info">
+                                        <h4>3</h4>
+                                        <p>Mant. Pendiente</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-2 col-md-4 col-sm-6">
+                                <div class="quick-report-card" onclick="reportesManager.generarReporteRapido('propiedades-disponibles')">
+                                    <div class="report-icon success">
+                                        <i class="fas fa-home"></i>
+                                    </div>
+                                    <div class="report-info">
+                                        <h4>8</h4>
+                                        <p>Propiedades Disponibles</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-2 col-md-4 col-sm-6">
+                                <div class="quick-report-card" onclick="reportesManager.generarReporteRapido('residentes-nuevos')">
+                                    <div class="report-icon info">
+                                        <i class="fas fa-user-plus"></i>
+                                    </div>
+                                    <div class="report-info">
+                                        <h4>2</h4>
+                                        <p>Nuevos Residentes</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-2 col-md-4 col-sm-6">
+                                <div class="quick-report-card" onclick="reportesManager.generarReporteRapido('ingresos-mes')">
+                                    <div class="report-icon primary">
+                                        <i class="fas fa-money-bill-wave"></i>
+                                    </div>
+                                    <div class="report-info">
+                                        <h4>$45.6K</h4>
+                                        <p>Ingresos del Mes</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-2 col-md-4 col-sm-6">
+                                <div class="quick-report-card" onclick="reportesManager.generarReporteRapido('gastos-mes')">
+                                    <div class="report-icon secondary">
+                                        <i class="fas fa-receipt"></i>
+                                    </div>
+                                    <div class="report-info">
+                                        <h4>$12.4K</h4>
+                                        <p>Gastos del Mes</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tabla de Reportes Generados -->
+        <div class="card">
+            <div class="card-header">
+                <h3><i class="fas fa-history me-2"></i>Reportes Generados Recientemente</h3>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-hover" id="reportesTable">
+                        <thead>
+                            <tr>
+                                <th>Nombre del Reporte</th>
+                                <th>Tipo</th>
+                                <th>Fecha Generación</th>
+                                <th>Rango de Fechas</th>
+                                <th>Tamaño</th>
+                                <th>Estado</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="reportesTableBody">
+                            <!-- Los reportes se cargan con JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Modal Generar Reporte Personalizado -->
+    <div class="modal fade" id="reporteModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Generar Reporte Personalizado</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="reporteForm">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Nombre del Reporte *</label>
+                                    <input type="text" class="form-control" id="reporteNombre" required placeholder="Ej: Reporte Financiero Q2 2024">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Tipo de Reporte *</label>
+                                    <select class="form-select" id="reporteTipo" required>
+                                        <option value="">Seleccionar tipo</option>
+                                        <option value="financiero">Financiero</option>
+                                        <option value="ocupacion">Ocupación</option>
+                                        <option value="mantenimiento">Mantenimiento</option>
+                                        <option value="residentes">Residentes</option>
+                                        <option value="completo">Completo</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Fecha Inicio *</label>
+                                    <input type="text" class="form-control" id="reporteFechaInicio" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Fecha Fin *</label>
+                                    <input type="text" class="form-control" id="reporteFechaFin" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Filtros Adicionales</label>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="filtroTorreA">
+                                        <label class="form-check-label" for="filtroTorreA">
+                                            Torre A
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="filtroTorreB">
+                                        <label class="form-check-label" for="filtroTorreB">
+                                            Torre B
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="filtroTorreC">
+                                        <label class="form-check-label" for="filtroTorreC">
+                                            Torre C
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="incluirGraficos">
+                                        <label class="form-check-label" for="incluirGraficos">
+                                            Incluir Gráficos
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="incluirDetalles">
+                                        <label class="form-check-label" for="incluirDetalles">
+                                            Incluir Detalles
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="incluirResumen">
+                                        <label class="form-check-label" for="incluirResumen">
+                                            Incluir Resumen Ejecutivo
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Formato de Salida *</label>
+                            <div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="formatoSalida" id="formatoPDF" value="pdf" checked>
+                                    <label class="form-check-label" for="formatoPDF">
+                                        <i class="fas fa-file-pdf text-danger me-1"></i>PDF
+                                    </label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="formatoSalida" id="formatoExcel" value="excel">
+                                    <label class="form-check-label" for="formatoExcel">
+                                        <i class="fas fa-file-excel text-success me-1"></i>Excel
+                                    </label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="formatoSalida" id="formatoCSV" value="csv">
+                                    <label class="form-check-label" for="formatoCSV">
+                                        <i class="fas fa-file-csv text-info me-1"></i>CSV
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Comentarios (Opcional)</label>
+                            <textarea class="form-control" id="reporteComentarios" rows="3" placeholder="Notas adicionales para el reporte..."></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" id="generarReportePersonalizadoBtn">
+                        <i class="fas fa-cog me-1"></i>
+                        Generar Reporte
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Vista Previa Reporte -->
+    <div class="modal fade" id="vistaPreviaModal" tabindex="-1">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Vista Previa del Reporte</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="vistaPreviaContent">
+                        <!-- Contenido dinámico de vista previa -->
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-primary" onclick="reportesManager.descargarReporte()">
+                        <i class="fas fa-download me-1"></i>
+                        Descargar
+                    </button>
+                    <button type="button" class="btn btn-outline-primary" onclick="reportesManager.compartirReporte()">
+                        <i class="fas fa-share me-1"></i>
+                        Compartir
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/es.js"></script>
+    <script src="js/admin.js"></script>
+    <script src="js/reportes.js"></script>
+</body>
+</html>

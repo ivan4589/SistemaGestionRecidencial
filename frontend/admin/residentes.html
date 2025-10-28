@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Residentes - Residencias Lux</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <!--<link rel="stylesheet" href="../css/styles.css">-->
+    <link rel="stylesheet" href="css/admin.css">
+    <link rel="stylesheet" href="css/residentes.css">
+</head>
+<body class="admin-body">
+    <!-- Sidebar Navigation -->
+    <nav class="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">
+                <i class="fas fa-building"></i>
+                <span>Residencias Lux</span>
+                <small class="admin-badge">Admin</small>
+            </div>
+        </div>
+        
+        <ul class="sidebar-nav">
+            <li class="nav-item">
+                <a href="index.html" class="nav-link">
+                    <i class="fas fa-tachometer-alt"></i>
+                    <span>Dashboard</span>
+                </a>
+            </li>
+            <li class="nav-item active">
+                <a href="residentes.html" class="nav-link">
+                    <i class="fas fa-users"></i>
+                    <span>Residentes</span>
+                    <span class="badge bg-primary" id="residentCount">24</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="propiedades.html" class="nav-link">
+                    <i class="fas fa-home"></i>
+                    <span>Propiedades</span>
+                    <span class="badge bg-success">36</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="finanzas.html" class="nav-link">
+                    <i class="fas fa-chart-line"></i>
+                    <span>Finanzas</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="reportes.html" class="nav-link">
+                    <i class="fas fa-chart-bar"></i>
+                    <span>Reportes</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="configuracion.html" class="nav-link">
+                    <i class="fas fa-cogs"></i>
+                    <span>Configuración</span>
+                </a>
+            </li>
+        </ul>
+        
+        <div class="sidebar-footer">
+            <div class="user-info">
+                <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Admin" class="user-avatar">
+                <div class="user-details">
+                    <span class="user-name">Admin Lux</span>
+                    <span class="user-role">Administrador General</span>
+                </div>
+            </div>
+            <a href="../index.html" class="logout-btn">
+                <i class="fas fa-sign-out-alt"></i>
+                Cerrar Sesión
+            </a>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <header class="content-header">
+            <div>
+                <h1>Gestión de Residentes</h1>
+                <p class="text-muted">Administra la información de todos los residentes del edificio</p>
+            </div>
+            <div class="header-actions">
+                <button class="btn btn-primary" id="nuevoResidenteBtn">
+                    <i class="fas fa-user-plus"></i>
+                    Nuevo Residente
+                </button>
+                <button class="btn btn-outline-primary ms-2" id="exportBtn">
+                    <i class="fas fa-download"></i>
+                    Exportar
+                </button>
+            </div>
+        </header>
+
+        <!-- Filtros y Búsqueda -->
+        <div class="card">
+            <div class="card-body">
+                <div class="row g-3">
+                    <div class="col-md-3">
+                        <label class="form-label">Buscar</label>
+                        <div class="input-group">
+                            <span class="input-group-text">
+                                <i class="fas fa-search"></i>
+                            </span>
+                            <input type="text" class="form-control" id="searchInput" placeholder="Nombre, email, departamento...">
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <label class="form-label">Estado</label>
+                        <select class="form-select" id="statusFilter">
+                            <option value="">Todos</option>
+                            <option value="activo">Activo</option>
+                            <option value="inactivo">Inactivo</option>
+                            <option value="pendiente">Pendiente</option>
+                        </select>
+                    </div>
+                    <div class="col-md-2">
+                        <label class="form-label">Torre</label>
+                        <select class="form-select" id="towerFilter">
+                            <option value="">Todas</option>
+                            <option value="A">Torre A</option>
+                            <option value="B">Torre B</option>
+                            <option value="C">Torre C</option>
+                        </select>
+                    </div>
+                    <div class="col-md-2">
+                        <label class="form-label">Estado Pago</label>
+                        <select class="form-select" id="paymentFilter">
+                            <option value="">Todos</option>
+                            <option value="al-dia">Al Día</option>
+                            <option value="pendiente">Pendiente</option>
+                            <option value="atrasado">Atrasado</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <label class="form-label">Fecha Ingreso</label>
+                        <input type="text" class="form-control" id="dateFilter" placeholder="Rango de fechas">
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-12">
+                        <button class="btn btn-outline-secondary" id="clearFilters">
+                            <i class="fas fa-times"></i>
+                            Limpiar Filtros
+                        </button>
+                        <button class="btn btn-primary ms-2" id="applyFilters">
+                            <i class="fas fa-filter"></i>
+                            Aplicar Filtros
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Estadísticas Rápidas -->
+        <div class="row quick-stats mt-4">
+            <div class="col-xl-2 col-md-4">
+                <div class="stat-card small">
+                    <div class="stat-icon bg-primary">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3 id="totalResidents">24</h3>
+                        <p>Total Residentes</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-2 col-md-4">
+                <div class="stat-card small">
+                    <div class="stat-icon bg-success">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3 id="activeResidents">22</h3>
+                        <p>Activos</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-2 col-md-4">
+                <div class="stat-card small">
+                    <div class="stat-icon bg-warning">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3 id="pendingResidents">2</h3>
+                        <p>Pendientes</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-2 col-md-4">
+                <div class="stat-card small">
+                    <div class="stat-icon bg-danger">
+                        <i class="fas fa-exclamation-triangle"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3 id="overdueResidents">3</h3>
+                        <p>Pagos Atrasados</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-2 col-md-4">
+                <div class="stat-card small">
+                    <div class="stat-icon bg-info">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>85%</h3>
+                        <p>Ocupación</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-2 col-md-4">
+                <div class="stat-card small">
+                    <div class="stat-icon bg-secondary">
+                        <i class="fas fa-sync"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>12</h3>
+                        <p>Renovaciones</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Lista de Residentes -->
+        <div class="card mt-4">
+            <div class="card-header">
+                <h3><i class="fas fa-list me-2"></i>Lista de Residentes</h3>
+                <div class="header-actions">
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" id="showInactive">
+                        <label class="form-check-label" for="showInactive">Mostrar inactivos</label>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-hover" id="residentsTable">
+                        <thead>
+                            <tr>
+                                <th>
+                                    <input type="checkbox" class="form-check-input" id="selectAll">
+                                </th>
+                                <th>Residente</th>
+                                <th>Departamento</th>
+                                <th>Contacto</th>
+                                <th>Fecha Ingreso</th>
+                                <th>Estado</th>
+                                <th>Pago</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="residentsTableBody">
+                            <!-- Los residentes se cargan con JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Paginación -->
+                <nav aria-label="Page navigation" class="mt-4">
+                    <ul class="pagination justify-content-center" id="pagination">
+                        <!-- La paginación se genera con JavaScript -->
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </main>
+
+    <!-- Modal Nuevo/Editar Residente -->
+    <div class="modal fade" id="residentModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalTitle">Nuevo Residente</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="residentForm">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Nombre *</label>
+                                    <input type="text" class="form-control" id="nombre" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Apellidos *</label>
+                                    <input type="text" class="form-control" id="apellidos" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Email *</label>
+                                    <input type="email" class="form-control" id="email" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Teléfono *</label>
+                                    <input type="tel" class="form-control" id="telefono" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Departamento *</label>
+                                    <select class="form-select" id="departamento" required>
+                                        <option value="">Seleccionar departamento</option>
+                                        <!-- Opciones se llenan con JavaScript -->
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Fecha Ingreso *</label>
+                                    <input type="text" class="form-control" id="fechaIngreso" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Tipo de Contrato</label>
+                                    <select class="form-select" id="tipoContrato">
+                                        <option value="alquiler">Alquiler</option>
+                                        <option value="propietario">Propietario</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Estado</label>
+                                    <select class="form-select" id="estado">
+                                        <option value="activo">Activo</option>
+                                        <option value="inactivo">Inactivo</option>
+                                        <option value="pendiente">Pendiente</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Observaciones</label>
+                            <textarea class="form-control" id="observaciones" rows="3"></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" id="saveResidentBtn">Guardar Residente</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Detalles Residente -->
+    <div class="modal fade" id="detailModal" tabindex="-1">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Detalles del Residente</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body" id="detailModalBody">
+                    <!-- Los detalles se cargan con JavaScript -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/es.js"></script>
+    <script src="js/admin.js"></script>
+    <script src="js/residentes.js"></script>
+</body>
+</html>

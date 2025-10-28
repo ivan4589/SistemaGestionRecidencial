@@ -1,0 +1,445 @@
+/* Estilos específicos para el control de acceso */
+
+/* Filtros de Visitas */
+.visitas-filters {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.visitas-filters .form-control,
+.visitas-filters .form-select {
+    border-radius: 8px;
+    border: 2px solid #e9ecef;
+}
+
+.visitas-filters .form-control:focus,
+.visitas-filters .form-select:focus {
+    border-color: var(--secondary-color);
+    box-shadow: 0 0 0 0.2rem rgba(52, 152, 219, 0.25);
+}
+
+/* Lista de Visitas */
+.visitas-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.visita-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    border-left: 4px solid var(--secondary-color);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: all 0.3s;
+    cursor: pointer;
+}
+
+.visita-item:hover {
+    transform: translateX(5px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+.visita-item.activa {
+    border-left-color: var(--success-color);
+}
+
+.visita-item.programada {
+    border-left-color: var(--warning-color);
+}
+
+.visita-item.completada {
+    border-left-color: #6c757d;
+    opacity: 0.7;
+}
+
+.visita-item.expirada {
+    border-left-color: var(--danger-color);
+    opacity: 0.7;
+}
+
+.visita-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: var(--secondary-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.2rem;
+}
+
+.visita-details {
+    flex: 1;
+}
+
+.visita-details h6 {
+    margin: 0;
+    color: var(--primary-color);
+    font-size: 1rem;
+}
+
+.visita-meta {
+    display: flex;
+    gap: 15px;
+    margin: 5px 0;
+    font-size: 0.85rem;
+    color: #666;
+}
+
+.visita-meta span {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.visita-status {
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.status-activa {
+    background: #d4edda;
+    color: var(--success-color);
+}
+
+.status-programada {
+    background: #fff3cd;
+    color: var(--warning-color);
+}
+
+.status-completada {
+    background: #e2e3e5;
+    color: #6c757d;
+}
+
+.status-expirada {
+    background: #f8d7da;
+    color: var(--danger-color);
+}
+
+.visita-actions {
+    display: flex;
+    gap: 5px;
+}
+
+.visita-actions .btn {
+    padding: 6px 12px;
+    font-size: 0.8rem;
+}
+
+/* Tabla de Historial */
+.table-responsive {
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.table {
+    margin: 0;
+}
+
+.table thead th {
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 15px 12px;
+    font-weight: 600;
+}
+
+.table tbody tr {
+    transition: all 0.3s;
+}
+
+.table tbody tr:hover {
+    background: #f8f9fa;
+}
+
+.table tbody td {
+    padding: 12px;
+    vertical-align: middle;
+    border-color: #f0f0f0;
+}
+
+/* Formulario de Visita */
+#visitaForm {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+#visitaForm .form-label {
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-bottom: 8px;
+}
+
+#visitaForm .form-control,
+#visitaForm .form-select {
+    border-radius: 8px;
+    border: 2px solid #e9ecef;
+    transition: all 0.3s;
+}
+
+#visitaForm .form-control:focus,
+#visitaForm .form-select:focus {
+    border-color: var(--secondary-color);
+    box-shadow: 0 0 0 0.2rem rgba(52, 152, 219, 0.25);
+}
+
+/* Códigos QR */
+.qr-codes {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.qr-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px;
+    background: white;
+    border-radius: 10px;
+    border: 2px solid #e9ecef;
+    transition: all 0.3s;
+}
+
+.qr-item:hover {
+    border-color: var(--secondary-color);
+    transform: translateY(-2px);
+}
+
+.qr-code-placeholder {
+    width: 60px;
+    height: 60px;
+    background: var(--secondary-color);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.5rem;
+}
+
+.qr-info {
+    flex: 1;
+}
+
+.qr-info h6 {
+    margin: 0;
+    color: var(--primary-color);
+    font-size: 0.95rem;
+}
+
+.qr-info p {
+    margin: 5px 0;
+    color: #666;
+    font-size: 0.85rem;
+}
+
+.qr-code-large {
+    width: 200px;
+    height: 200px;
+    background: #f8f9fa;
+    border: 2px dashed #dee2e6;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    font-size: 4rem;
+    color: var(--secondary-color);
+}
+
+/* Modal Detalles */
+#visitaModalBody {
+    padding: 20px;
+}
+
+.visita-detail-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.visita-detail-item:last-child {
+    border-bottom: none;
+}
+
+.visita-detail-item strong {
+    color: var(--primary-color);
+    min-width: 120px;
+}
+
+.visita-detail-item .value {
+    text-align: right;
+    flex: 1;
+    color: #666;
+}
+
+/* Badges de Tipo de Visitante */
+.tipo-badge {
+    padding: 4px 8px;
+    border-radius: 8px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.tipo-familiar {
+    background: #d4edda;
+    color: var(--success-color);
+}
+
+.tipo-amigo {
+    background: #cce7ff;
+    color: var(--secondary-color);
+}
+
+.tipo-conocido {
+    background: #fff3cd;
+    color: var(--warning-color);
+}
+
+.tipo-servicio {
+    background: #e2e3e5;
+    color: #6c757d;
+}
+
+.tipo-trabajo {
+    background: #f8d7da;
+    color: var(--danger-color);
+}
+
+/* Indicadores de Estado */
+.access-indicator {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.access-granted {
+    background: #d4edda;
+    color: var(--success-color);
+}
+
+.access-pending {
+    background: #fff3cd;
+    color: var(--warning-color);
+}
+
+.access-denied {
+    background: #f8d7da;
+    color: var(--danger-color);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .visita-item {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+    }
+    
+    .visita-meta {
+        flex-direction: column;
+        gap: 5px;
+    }
+    
+    .visita-actions {
+        justify-content: center;
+    }
+    
+    .table-responsive {
+        font-size: 0.85rem;
+    }
+    
+    .qr-item {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .visita-detail-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+    
+    .visita-detail-item .value {
+        text-align: left;
+    }
+}
+
+/* Animaciones */
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.visita-item {
+    animation: slideInRight 0.5s ease forwards;
+}
+
+.visita-item:nth-child(1) { animation-delay: 0.1s; }
+.visita-item:nth-child(2) { animation-delay: 0.2s; }
+.visita-item:nth-child(3) { animation-delay: 0.3s; }
+.visita-item:nth-child(4) { animation-delay: 0.4s; }
+
+/* Estados de Loading */
+.loading {
+    opacity: 0.6;
+    pointer-events: none;
+    position: relative;
+}
+
+.loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 20px;
+    height: 20px;
+    border: 2px solid #f3f3f3;
+    border-top: 2px solid var(--secondary-color);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* Notificaciones de Acceso */
+.access-notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 10000;
+    min-width: 300px;
+    animation: slideInRight 0.3s ease;
+}
+
+/* Tarjetas de Estadísticas Específicas */
+.stat-card .stat-icon.bg-primary { background: var(--secondary-color); }
+.stat-card .stat-icon.bg-success { background: var(--success-color); }
+.stat-card .stat-icon.bg-warning { background: var(--warning-color); }

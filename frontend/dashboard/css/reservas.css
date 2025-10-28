@@ -1,0 +1,439 @@
+/* Estilos específicos para el sistema de reservas */
+
+/* Controles del Calendario */
+.calendar-controls {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.calendar-controls .btn-group .btn {
+    border-radius: 8px;
+    margin: 0 2px;
+}
+
+.calendar-controls .btn-group .btn.active {
+    background: var(--secondary-color);
+    color: white;
+    border-color: var(--secondary-color);
+}
+
+/* Mini Calendario */
+.mini-calendar {
+    background: white;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.calendar-header h5 {
+    margin: 0;
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+}
+
+.calendar-day-header {
+    text-align: center;
+    font-weight: 600;
+    color: var(--primary-color);
+    padding: 10px 5px;
+    font-size: 0.85rem;
+}
+
+.calendar-day {
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-size: 0.9rem;
+    position: relative;
+}
+
+.calendar-day:hover {
+    background: #e9ecef;
+}
+
+.calendar-day.other-month {
+    color: #ccc;
+    background: #f8f9fa;
+}
+
+.calendar-day.today {
+    background: var(--secondary-color);
+    color: white;
+    font-weight: 600;
+}
+
+.calendar-day.selected {
+    background: var(--success-color);
+    color: white;
+    font-weight: 600;
+}
+
+.calendar-day.available::after {
+    content: '';
+    position: absolute;
+    bottom: 2px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 4px;
+    height: 4px;
+    background: var(--success-color);
+    border-radius: 50%;
+}
+
+.calendar-day.occupied {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.calendar-day.reserved {
+    background: #fff3cd;
+    color: #856404;
+    font-weight: 600;
+}
+
+/* Leyenda del Calendario */
+.calendar-legend {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.85rem;
+}
+
+.legend-color {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+
+.legend-color.available {
+    background: var(--success-color);
+}
+
+.legend-color.reserved {
+    background: var(--warning-color);
+}
+
+.legend-color.occupied {
+    background: var(--danger-color);
+}
+
+.legend-color.selected {
+    background: var(--secondary-color);
+}
+
+/* Horarios Disponibles */
+.time-slots {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 10px;
+}
+
+.time-slot {
+    padding: 12px 8px;
+    text-align: center;
+    background: #f8f9fa;
+    border: 2px solid #e9ecef;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-size: 0.9rem;
+}
+
+.time-slot:hover {
+    border-color: var(--secondary-color);
+    transform: translateY(-2px);
+}
+
+.time-slot.selected {
+    background: var(--secondary-color);
+    color: white;
+    border-color: var(--secondary-color);
+}
+
+.time-slot.occupied {
+    background: #f8d7da;
+    color: #721c24;
+    border-color: #f5c6cb;
+    cursor: not-allowed;
+}
+
+.time-slot.available {
+    background: #d4edda;
+    color: var(--success-color);
+    border-color: #c3e6cb;
+}
+
+/* Formulario de Reserva */
+#reservaForm {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+#reservaForm .form-label {
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-bottom: 8px;
+}
+
+#reservaForm .form-control,
+#reservaForm .form-select {
+    border-radius: 8px;
+    border: 2px solid #e9ecef;
+    transition: all 0.3s;
+}
+
+#reservaForm .form-control:focus,
+#reservaForm .form-select:focus {
+    border-color: var(--secondary-color);
+    box-shadow: 0 0 0 0.2rem rgba(52, 152, 219, 0.25);
+}
+
+/* Lista de Reservas */
+.reservas-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.reserva-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px;
+    background: white;
+    border-radius: 10px;
+    border-left: 4px solid var(--secondary-color);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: all 0.3s;
+}
+
+.reserva-item:hover {
+    transform: translateX(5px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+.reserva-icon {
+    width: 40px;
+    height: 40px;
+    background: var(--secondary-color);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.1rem;
+}
+
+.reserva-details {
+    flex: 1;
+}
+
+.reserva-details h6 {
+    margin: 0;
+    color: var(--primary-color);
+    font-size: 0.95rem;
+}
+
+.reserva-details p {
+    margin: 5px 0 0;
+    color: #666;
+    font-size: 0.85rem;
+}
+
+.reserva-actions {
+    display: flex;
+    gap: 5px;
+}
+
+.reserva-actions .btn {
+    padding: 4px 8px;
+    font-size: 0.75rem;
+}
+
+/* Reglas de Reserva */
+.rules-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.rules-list li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.rules-list li:last-child {
+    border-bottom: none;
+}
+
+.rules-list i {
+    width: 16px;
+    text-align: center;
+}
+
+/* Modal de Confirmación */
+#reservaSummary {
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 10px;
+}
+
+.summary-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.summary-item:last-child {
+    border-bottom: none;
+}
+
+.summary-item strong {
+    color: var(--primary-color);
+}
+
+.summary-item .value {
+    font-weight: 600;
+    color: var(--secondary-color);
+}
+
+/* Estados de las Reservas */
+.reserva-status {
+    padding: 3px 8px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.status-confirmed {
+    background: #d4edda;
+    color: var(--success-color);
+}
+
+.status-pending {
+    background: #fff3cd;
+    color: var(--warning-color);
+}
+
+.status-cancelled {
+    background: #f8d7da;
+    color: var(--danger-color);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .calendar-grid {
+        grid-template-columns: repeat(7, 1fr);
+        gap: 2px;
+    }
+    
+    .calendar-day {
+        font-size: 0.8rem;
+        padding: 5px;
+    }
+    
+    .time-slots {
+        grid-template-columns: repeat(4, 1fr);
+    }
+    
+    .reserva-item {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+    }
+    
+    .reserva-actions {
+        justify-content: center;
+    }
+    
+    .calendar-legend {
+        flex-direction: column;
+        gap: 10px;
+        align-items: flex-start;
+    }
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.reserva-item {
+    animation: fadeIn 0.5s ease forwards;
+}
+
+.time-slot {
+    animation: fadeIn 0.3s ease forwards;
+}
+
+/* Loading States */
+.loading {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 20px;
+    height: 20px;
+    border: 2px solid #f3f3f3;
+    border-top: 2px solid var(--secondary-color);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* Áreas Específicas */
+.area-piscina { border-left-color: #17a2b8; }
+.area-gimnasio { border-left-color: #28a745; }
+.area-salon { border-left-color: #ffc107; }
+.area-bbq { border-left-color: #fd7e14; }
+.area-cancha { border-left-color: #6f42c1; }
+.area-cine { border-left-color: #e83e8c; }
+.area-coworking { border-left-color: #20c997; }

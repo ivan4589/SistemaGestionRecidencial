@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Departamento - Residencias Lux</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/mi-departamento.css">
+</head>
+<body class="dashboard-body">
+    <!-- Sidebar Navigation -->
+    <nav class="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">
+                <i class="fas fa-building"></i>
+                <span>Residencias Lux</span>
+            </div>
+        </div>
+        
+        <ul class="sidebar-nav">
+            <li class="nav-item">
+                <a href="index.html" class="nav-link">
+                    <i class="fas fa-home"></i>
+                    <span>Dashboard</span>
+                </a>
+            </li>
+            <li class="nav-item active">
+                <a href="mi-departamento.html" class="nav-link">
+                    <i class="fas fa-door-open"></i>
+                    <span>Mi Departamento</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="reservas.html" class="nav-link">
+                    <i class="fas fa-calendar-check"></i>
+                    <span>Reservar Áreas</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="acceso.html" class="nav-link">
+                    <i class="fas fa-user-friends"></i>
+                    <span>Control de Acceso</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="mensajes.html" class="nav-link">
+                    <i class="fas fa-comments"></i>
+                    <span>Mensajes</span>
+                    <span class="badge bg-danger">3</span>
+                </a>
+            </li>
+        </ul>
+        
+        <div class="sidebar-footer">
+            <div class="user-info">
+                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Usuario" class="user-avatar">
+                <div class="user-details">
+                    <span class="user-name">Juan Pérez</span>
+                    <span class="user-role">Apartamento 302</span>
+                </div>
+            </div>
+            <a href="../index.html" class="logout-btn">
+                <i class="fas fa-sign-out-alt"></i>
+                Cerrar Sesión
+            </a>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <header class="content-header">
+            <div>
+                <h1>Mi Departamento</h1>
+                <p class="text-muted">Apartamento 302 - Torre A - 3er Piso</p>
+            </div>
+            <div class="header-actions">
+                <button class="btn btn-primary" id="solicitarMantenimientoBtn">
+                    <i class="fas fa-tools"></i>
+                    Solicitar Mantenimiento
+                </button>
+            </div>
+        </header>
+
+        <div class="row">
+            <!-- Información del Departamento -->
+            <div class="col-lg-4">
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-info-circle me-2"></i>Información del Departamento</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="dept-info-item">
+                            <i class="fas fa-user"></i>
+                            <div>
+                                <strong>Propietario</strong>
+                                <p>Juan Pérez</p>
+                            </div>
+                        </div>
+                        <div class="dept-info-item">
+                            <i class="fas fa-expand-arrows-alt"></i>
+                            <div>
+                                <strong>Área</strong>
+                                <p>75 m²</p>
+                            </div>
+                        </div>
+                        <div class="dept-info-item">
+                            <i class="fas fa-bed"></i>
+                            <div>
+                                <strong>Habitaciones</strong>
+                                <p>2 habitaciones, 2 baños</p>
+                            </div>
+                        </div>
+                        <div class="dept-info-item">
+                            <i class="fas fa-calendar-alt"></i>
+                            <div>
+                                <strong>Contrato desde</strong>
+                                <p>15 Marzo 2023</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Estado de Servicios -->
+                <div class="card mt-4">
+                    <div class="card-header">
+                        <h3><i class="fas fa-bolt me-2"></i>Estado de Servicios</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="service-status">
+                            <div class="service-item active">
+                                <i class="fas fa-tint"></i>
+                                <span>Agua</span>
+                                <span class="status-badge active">Activo</span>
+                            </div>
+                            <div class="service-item active">
+                                <i class="fas fa-lightbulb"></i>
+                                <span>Electricidad</span>
+                                <span class="status-badge active">Activo</span>
+                            </div>
+                            <div class="service-item active">
+                                <i class="fas fa-wifi"></i>
+                                <span>Internet</span>
+                                <span class="status-badge active">Activo</span>
+                            </div>
+                            <div class="service-item warning">
+                                <i class="fas fa-gas-pump"></i>
+                                <span>Gas</span>
+                                <span class="status-badge warning">Pendiente Pago</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Estado Financiero -->
+            <div class="col-lg-8">
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-chart-line me-2"></i>Estado Financiero</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="financial-summary">
+                            <div class="financial-item">
+                                <div class="financial-icon bg-success">
+                                    <i class="fas fa-check"></i>
+                                </div>
+                                <div class="financial-info">
+                                    <h4>Al Día</h4>
+                                    <p>Estado actual</p>
+                                </div>
+                                <div class="financial-amount">
+                                    <span class="amount">$0.00</span>
+                                    <span class="label">Deuda Actual</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Detalle de Pagos -->
+                        <div class="payments-section">
+                            <h5>Historial de Pagos</h5>
+                            <div class="payments-list">
+                                <div class="payment-item paid">
+                                    <div class="payment-info">
+                                        <h6>Alquiler Noviembre 2024</h6>
+                                        <span class="payment-date">Pagado: 05/11/2024</span>
+                                    </div>
+                                    <div class="payment-amount">
+                                        <span class="amount">$1,200.00</span>
+                                        <span class="status paid">Pagado</span>
+                                    </div>
+                                </div>
+                                <div class="payment-item paid">
+                                    <div class="payment-info">
+                                        <h6>Mantenimiento Octubre 2024</h6>
+                                        <span class="payment-date">Pagado: 28/10/2024</span>
+                                    </div>
+                                    <div class="payment-amount">
+                                        <span class="amount">$150.00</span>
+                                        <span class="status paid">Pagado</span>
+                                    </div>
+                                </div>
+                                <div class="payment-item pending">
+                                    <div class="payment-info">
+                                        <h6>Alquiler Diciembre 2024</h6>
+                                        <span class="payment-date">Vence: 05/12/2024</span>
+                                    </div>
+                                    <div class="payment-amount">
+                                        <span class="amount">$1,200.00</span>
+                                        <span class="status pending">Pendiente</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Solicitudes de Mantenimiento -->
+                <div class="card mt-4">
+                    <div class="card-header">
+                        <h3><i class="fas fa-tools me-2"></i>Solicitudes de Mantenimiento</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="maintenance-actions mb-4">
+                            <button class="btn btn-primary" id="nuevaSolicitudBtn">
+                                <i class="fas fa-plus"></i>
+                                Nueva Solicitud
+                            </button>
+                        </div>
+
+                        <div class="maintenance-list">
+                            <div class="maintenance-item">
+                                <div class="maintenance-icon">
+                                    <i class="fas fa-faucet"></i>
+                                </div>
+                                <div class="maintenance-details">
+                                    <h6>Fuga en grifo de cocina</h6>
+                                    <p>Solicitado: 15/11/2024</p>
+                                    <span class="priority medium">Prioridad Media</span>
+                                </div>
+                                <div class="maintenance-status">
+                                    <span class="status in-progress">En Proceso</span>
+                                    <button class="btn btn-sm btn-outline-secondary">Ver Detalles</button>
+                                </div>
+                            </div>
+
+                            <div class="maintenance-item">
+                                <div class="maintenance-icon">
+                                    <i class="fas fa-lightbulb"></i>
+                                </div>
+                                <div class="maintenance-details">
+                                    <h6>Luz del pasillo no funciona</h6>
+                                    <p>Solicitado: 10/11/2024</p>
+                                    <span class="priority low">Prioridad Baja</span>
+                                </div>
+                                <div class="maintenance-status">
+                                    <span class="status completed">Completado</span>
+                                    <button class="btn btn-sm btn-outline-secondary">Ver Detalles</button>
+                                </div>
+                            </div>
+
+                            <div class="maintenance-item">
+                                <div class="maintenance-icon">
+                                    <i class="fas fa-temperature-high"></i>
+                                </div>
+                                <div class="maintenance-details">
+                                    <h6>Aire acondicionado no enfría</h6>
+                                    <p>Solicitado: 08/11/2024</p>
+                                    <span class="priority high">Prioridad Alta</span>
+                                </div>
+                                <div class="maintenance-status">
+                                    <span class="status pending">Pendiente</span>
+                                    <button class="btn btn-sm btn-outline-secondary">Ver Detalles</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Modal Nueva Solicitud Mantenimiento -->
+    <div class="modal fade" id="maintenanceModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Nueva Solicitud de Mantenimiento</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="maintenanceForm">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Tipo de Problema</label>
+                                    <select class="form-select" id="problemType" required>
+                                        <option value="">Seleccionar tipo</option>
+                                        <option value="plomeria">Plomería</option>
+                                        <option value="electricidad">Electricidad</option>
+                                        <option value="aire_acondicionado">Aire Acondicionado</option>
+                                        <option value="carpinteria">Carpintería</option>
+                                        <option value="pintura">Pintura</option>
+                                        <option value="otros">Otros</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Prioridad</label>
+                                    <select class="form-select" id="priority" required>
+                                        <option value="baja">Baja</option>
+                                        <option value="media" selected>Media</option>
+                                        <option value="alta">Alta</option>
+                                        <option value="urgente">Urgente</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Descripción del Problema</label>
+                            <textarea class="form-control" id="problemDescription" rows="4" placeholder="Describe detalladamente el problema..." required></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Ubicación en el Departamento</label>
+                            <input type="text" class="form-control" id="location" placeholder="Ej: Cocina, Baño principal, Dormitorio..." required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">¿Permite el acceso al técnico?</label>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="access" id="accessYes" value="yes" checked>
+                                <label class="form-check-label" for="accessYes">
+                                    Sí, puedo estar presente
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="access" id="accessNo" value="no">
+                                <label class="form-check-label" for="accessNo">
+                                    No, necesito coordinar horario
+                                </label>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" id="submitMaintenanceBtn">Enviar Solicitud</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/dashboard.js"></script>  
+   <script src="js/mi-departamento.js"></script>
+</body>
+</html>

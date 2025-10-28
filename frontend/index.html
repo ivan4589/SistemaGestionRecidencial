@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Residencias Lux - Viviendas y Oficinas en Alquiler</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href=".\css\styles.css">
+</head>
+<body>
+    <!-- Header y Navegación -->
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light py-3">
+            <div class="container">
+                <a class="navbar-brand" href="#">
+                    <i class="fas fa-building"></i>Residencias Lux
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+            <a class="nav-link" href="#inicio">Inicio</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#viviendas">Viviendas</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#oficinas">Oficinas</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#galerias">Galerías</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#contacto">Contacto</a>
+        </li>
+    </ul>
+    <!-- Agregar estos dos botones -->
+    <div class="d-flex ms-lg-3">
+        <a href="login.html" class="btn btn-outline-primary me-2">Iniciar Sesión</a>
+        <a href="#contacto" class="btn btn-primary">Solicitar Información</a>
+    </div>
+</div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="inicio">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto text-center">
+                    <h1>Viviendas y Oficinas de Lujo en el Corazón de la Ciudad</h1>
+                    <p>Descubre el lugar perfecto para vivir, trabajar y emprender. Residencias Lux ofrece espacios únicos diseñados para tu comodidad y éxito.</p>
+                    <div class="mt-4">
+                        <a href="#viviendas" class="btn btn-primary btn-lg me-3">Ver Viviendas</a>
+                        <a href="#oficinas" class="btn btn-outline-light btn-lg">Ver Oficinas</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Características del Edificio -->
+    <section class="features">
+        <div class="container">
+            <div class="section-title">
+                <h2>Características Exclusivas</h2>
+                <p>Nuestro edificio cuenta con amenities de primera categoría para ofrecerte la mejor experiencia</p>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-swimming-pool"></i>
+                        </div>
+                        <h3>Piscina y Área de Spa</h3>
+                        <p>Disfruta de nuestra piscina climatizada y área de spa para tu relax y bienestar.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-dumbbell"></i>
+                        </div>
+                        <h3>Gimnasio Equipado</h3>
+                        <p>Mantente en forma con nuestro gimnasio de última generación disponible 24/7.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3>Seguridad 24/7</h3>
+                        <p>Sistema de seguridad avanzado con vigilancia las 24 horas para tu tranquilidad.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-wifi"></i>
+                        </div>
+                        <h3>Internet de Alta Velocidad</h3>
+                        <p>Conexión de fibra óptica en todas las áreas comunes y opcional en unidades.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-parking"></i>
+                        </div>
+                        <h3>Estacionamiento Privado</h3>
+                        <p>Amplio estacionamiento subterráneo con sistema de acceso controlado.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-concierge-bell"></i>
+                        </div>
+                        <h3>Servicio de Concierge</h3>
+                        <p>Personal dedicado para atender tus necesidades y solicitudes especiales.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Viviendas en Alquiler -->
+    <section id="viviendas">
+        <div class="container">
+            <div class="section-title">
+                <h2>Viviendas en Alquiler</h2>
+                <p>Descubre nuestros apartamentos diseñados para ofrecerte comodidad y estilo de vida premium</p>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-md-6">
+                    <div class="property-card">
+                        <div class="property-img" style="background-image: url('https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+                        <div class="property-content">
+                            <h3>Apartamento Tipo Estudio</h3>
+                            <div class="property-price">Bs 850/mes</div>
+                            <ul class="property-features">
+                                <li><i class="fas fa-expand-arrows-alt"></i> 45 m²</li>
+                                <li><i class="fas fa-bed"></i> 1 habitación</li>
+                                <li><i class="fas fa-bath"></i> 1 baño</li>
+                                <li><i class="fas fa-utensils"></i> Cocina equipada</li>
+                            </ul>
+                            <a href="#contacto" class="btn btn-primary w-100">Solicitar Información</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="property-card">
+                        <div class="property-img" style="background-image: url('https://images.unsplash.com/photo-1560185127-6ed189bf02f4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+                        <div class="property-content">
+                            <h3>Apartamento 2 Habitaciones</h3>
+                            <div class="property-price">Bs 1,200/mes</div>
+                            <ul class="property-features">
+                                <li><i class="fas fa-expand-arrows-alt"></i> 75 m²</li>
+                                <li><i class="fas fa-bed"></i> 2 habitaciones</li>
+                                <li><i class="fas fa-bath"></i> 2 baños</li>
+                                <li><i class="fas fa-utensils"></i> Cocina integral</li>
+                            </ul>
+                            <a href="#contacto" class="btn btn-primary w-100">Solicitar Información</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="property-card">
+                        <div class="property-img" style="background-image: url('https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+                        <div class="property-content">
+                            <h3>Penthouse de Lujo</h3>
+                            <div class="property-price">Bs 2,500/mes</div>
+                            <ul class="property-features">
+                                <li><i class="fas fa-expand-arrows-alt"></i> 120 m²</li>
+                                <li><i class="fas fa-bed"></i> 3 habitaciones</li>
+                                <li><i class="fas fa-bath"></i> 2.5 baños</li>
+                                <li><i class="fas fa-utensils"></i> Cocina de lujo</li>
+                                <li><i class="fas fa-tree"></i> Terraza privada</li>
+                            </ul>
+                            <a href="#contacto" class="btn btn-primary w-100">Solicitar Información</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+   <!-- Áreas Comunes Mejoradas -->
+<section id="areas-comunes" class="areas-comunes bg-light">
+    <div class="container">
+        <div class="section-title">
+            <h2>Áreas Comunes del Edificio</h2>
+            <p>Espacios compartidos diseñados para mejorar tu calidad de vida y fomentar la convivencia entre residentes.</p>
+        </div>
+        <div class="row">
+            <!-- Recepción y Seguridad -->
+            <div class="col-md-4">
+                <div class="area-item">
+                    <i class="fas fa-concierge-bell"></i>
+                    <h3>Recepción con Concierge</h3>
+                    <p>Lobby elegante con servicio de conserjería 24/7 y gestión de paquetería segura.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="area-item">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Seguridad 24/7</h3>
+                    <p>Sistema de vigilancia avanzado con control de acceso y personal de seguridad.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="area-item">
+                    <i class="fas fa-key"></i>
+                    <h3>Portero Eléctrico</h3>
+                    <p>Sistema de acceso seguro con video porteros en todas las entradas.</p>
+                </div>
+            </div>
+
+            <!-- Recreación y Deporte -->
+            <div class="col-md-4">
+                <div class="area-item">
+                    <i class="fas fa-swimming-pool"></i>
+                    <h3>Piscina Climatizada y Spa</h3>
+                    <p>Área acuática con piscina temperada, jacuzzi y zona de descanso.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="area-item">
+                    <i class="fas fa-dumbbell"></i>
+                    <h3>Gimnasio 24/7</h3>
+                    <p>Equipamiento de última generación disponible las 24 horas.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="area-item">
+                    <i class="fas fa-basketball-ball"></i>
+                    <h3>Cancha Multideportiva</h3>
+                    <p>Espacio para fútbol, básquetbol y vóley con iluminación profesional.</p>
+                </div>
+            </div>
+
+            <!-- Áreas Sociales y Verdes -->
+            <div class="col-md-4">
+                <div class="area-item">
+                    <i class="fas fa-tree"></i>
+                    <h3>Jardines y Terraza Panorámica</h3>
+                    <p>Espacios verdes con áreas de descanso y vista privilegiada de la ciudad.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="area-item">
+                    <i class="fas fa-seedling"></i>
+                    <h3>Zona de Parrillas</h3>
+                    <p>Área BBQ con parrillas, mesas y sillas para reuniones sociales.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="area-item">
+                    <i class="fas fa-utensils"></i>
+                    <h3>Salón de Eventos</h3>
+                    <p>Amplio espacio para celebraciones con cocina anexa y sistema de audio.</p>
+                </div>
+            </div>
+
+            <!-- Trabajo y Servicios -->
+            <div class="col-md-4">
+                <div class="area-item">
+                    <i class="fas fa-laptop-house"></i>
+                    <h3>Espacio Coworking</h3>
+                    <p>Área de teletrabajo con internet de alta velocidad y salas de reuniones.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="area-item">
+                    <i class="fas fa-washing-machine"></i>
+                    <h3>Lavandería Automatizada</h3>
+                    <p>Lavadoras y secadoras de última generación con sistema de pago digital.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="area-item">
+                    <i class="fas fa-bicycle"></i>
+                    <h3>Estacionamiento Bicicletas</h3>
+                    <p>Área techada y segura para bicicletas y scooters eléctricos.</p>
+                </div>
+            </div>
+
+            <!-- Servicios Adicionales -->
+            <div class="col-md-4">
+                <div class="area-item">
+                    <i class="fas fa-child"></i>
+                    <h3>Parque Infantil</h3>
+                    <p>Zona de juegos segura para niños con equipamiento certificado.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="area-item">
+                    <i class="fas fa-paw"></i>
+                    <h3>Pet Area</h3>
+                    <p>Espacio designado para mascotas con obstáculos y área de esparcimiento.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="area-item">
+                    <i class="fas fa-recycle"></i>
+                    <h3>Centro de Reciclaje</h3>
+                    <p>Puntos ecológicos para separación y gestión responsable de residuos.</p>
+                </div>
+            </div>
+
+            <!-- Áreas Premium -->
+            <div class="col-md-4">
+                <div class="area-item">
+                    <i class="fas fa-film"></i>
+                    <h3>Sala de Cine</h3>
+                    <p>Home theater profesional con butacas y sistema de sonido envolvente.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="area-item">
+                    <i class="fas fa-hot-tub"></i>
+                    <h3>Sauna y Baño Turco</h3>
+                    <p>Área de relax completo con sauna finlandesa y baño de vapor.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="area-item">
+                    <i class="fas fa-seedling"></i>
+                    <h3>Huerto Urbano</h3>
+                    <p>Espacio comunitario para cultivo de hierbas aromáticas y hortalizas.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+    
+
+
+
+    <!-- Oficinas en Alquiler -->
+    <section id="oficinas" class="bg-light">
+        <div class="container">
+            <div class="section-title">
+                <h2>Oficinas en Alquiler</h2>
+                <p>Espacios profesionales diseñados para impulsar tu negocio y productividad</p>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-md-6">
+                    <div class="property-card">
+                        <div class="property-img" style="background-image: url('https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+                        <div class="property-content">
+                            <h3>Oficina Pequeña</h3>
+                            <div class="property-price">Bs 600/mes</div>
+                            <ul class="property-features">
+                                <li><i class="fas fa-expand-arrows-alt"></i> 30 m²</li>
+                                <li><i class="fas fa-user"></i> 2-4 personas</li>
+                                <li><i class="fas fa-wifi"></i> Internet incluido</li>
+                                <li><i class="fas fa-coffee"></i> Área de cafetería</li>
+                            </ul>
+                            <a href="#contacto" class="btn btn-primary w-100">Solicitar Información</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="property-card">
+                        <div class="property-img" style="background-image: url('https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+                        <div class="property-content">
+                            <h3>Oficina Mediana</h3>
+                            <div class="property-price">Bs 1,000/mes</div>
+                            <ul class="property-features">
+                                <li><i class="fas fa-expand-arrows-alt"></i> 60 m²</li>
+                                <li><i class="fas fa-user"></i> 5-8 personas</li>
+                                <li><i class="fas fa-wifi"></i> Internet de alta velocidad</li>
+                                <li><i class="fas fa-print"></i> Área de impresión</li>
+                            </ul>
+                            <a href="#contacto" class="btn btn-primary w-100">Solicitar Información</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="property-card">
+                        <div class="property-img" style="background-image: url('https://images.unsplash.com/photo-1497366811353-6870744d04b2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+                        <div class="property-content">
+                            <h3>Oficina Ejecutiva</h3>
+                            <div class="property-price">Bs 1,800/mes</div>
+                            <ul class="property-features">
+                                <li><i class="fas fa-expand-arrows-alt"></i> 90 m²</li>
+                                <li><i class="fas fa-user"></i> 10-15 personas</li>
+                                <li><i class="fas fa-wifi"></i> Internet empresarial</li>
+                                <li><i class="fas fa-users"></i> Sala de reuniones</li>
+                            </ul>
+                            <a href="#contacto" class="btn btn-primary w-100">Solicitar Información</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Galerías Comerciales -->
+    <section id="galerias">
+        <div class="container">
+            <div class="section-title">
+                <h2>Galerías Comerciales</h2>
+                <p>Espacios comerciales ideales para emprendedores y negocios establecidos</p>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-md-6">
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Local Comercial Pequeño" class="gallery-img">
+                        <div class="gallery-overlay">
+                            <h3>Local Comercial Pequeño</h3>
+                            <p>Ideal para boutique o negocio especializado</p>
+                            <p class="property-price">$800/mes</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Local Comercial Mediano" class="gallery-img">
+                        <div class="gallery-overlay">
+                            <h3>Local Comercial Mediano</h3>
+                            <p>Perfecto para restaurante o negocio de servicios</p>
+                            <p class="property-price">$1,500/mes</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Espacio Comercial Grande" class="gallery-img">
+                        <div class="gallery-overlay">
+                            <h3>Espacio Comercial Grande</h3>
+                            <p>Ideal para supermercado o negocio de alto tráfico</p>
+                            <p class="property-price">$2,500/mes</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonios -->
+    <section class="testimonials bg-light">
+        <div class="container">
+            <div class="section-title">
+                <h2>Lo que Dicen Nuestros Clientes</h2>
+                <p>Experiencias reales de personas que han elegido Residencias Lux</p>
+            </div>
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="testimonial-card">
+                        <div class="testimonial-text">
+                            "Llevo 2 años viviendo aquí y la experiencia ha sido increíble. Las amenities son de primera calidad y la ubicación es perfecta."
+                        </div>
+                        <div class="testimonial-author">
+                            <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="María González" class="author-img">
+                            <div class="author-info">
+                                <h4>María González</h4>
+                                <p>Residente desde 2021</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="testimonial-card">
+                        <div class="testimonial-text">
+                            "Nuestra oficina en Residencias Lux ha impulsado nuestra productividad. El ambiente profesional y los servicios son excepcionales."
+                        </div>
+                        <div class="testimonial-author">
+                            <img src="https://randomuser.me/api/portraits/men/54.jpg" alt="Carlos López" class="author-img">
+                            <div class="author-info">
+                                <h4>Carlos López</h4>
+                                <p>CEO, TechSolutions</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="testimonial-card">
+                        <div class="testimonial-text">
+                            "El local comercial que alquilamos ha sido fundamental para el crecimiento de nuestro negocio. La afluencia de clientes es excelente."
+                        </div>
+                        <div class="testimonial-author">
+                            <img src="https://randomuser.me/api/portraits/women/67.jpg" alt="Ana Martínez" class="author-img">
+                            <div class="author-info">
+                                <h4>Ana Martínez</h4>
+                                <p>Propietaria, Boutique Elegante</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contacto -->
+    <section id="contacto" class="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2 style="color: white;">Contáctanos</h2>
+                <p style="color: #ccc;">¿Interesado en nuestras propiedades? Déjanos tus datos y te contactaremos</p>
+            </div>
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <div class="contact-form">
+                        <h3>Solicitar Información</h3>
+                        <form id="contactForm">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control" placeholder="Nombre completo" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="email" class="form-control" placeholder="Correo electrónico" required>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <input type="tel" class="form-control" placeholder="Teléfono" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <select class="form-control" required>
+                                        <option value="" disabled selected>Interesado en</option>
+                                        <option value="vivienda">Vivienda</option>
+                                        <option value="oficina">Oficina</option>
+                                        <option value="local">Local Comercial</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <textarea class="form-control" rows="5" placeholder="Mensaje adicional"></textarea>
+                            <button type="submit" class="btn btn-primary btn-lg w-100 mt-3">Enviar Solicitud</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="footer-logo">
+                        <i class="fas fa-building"></i>Residencias Lux
+                    </div>
+                    <p>Ofrecemos viviendas, oficinas y locales comerciales de alta calidad en la mejor ubicación de la ciudad.</p>
+                    <div class="social-icons mt-4">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6">
+                    <div class="footer-links">
+                        <h4>Enlaces Rápidos</h4>
+                        <ul>
+                            <li><a href="#inicio">Inicio</a></li>
+                            <li><a href="#viviendas">Viviendas</a></li>
+                            <li><a href="#oficinas">Oficinas</a></li>
+                            <li><a href="#galerias">Galerías</a></li>
+                            <li><a href="#contacto">Contacto</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="footer-links">
+                        <h4>Propiedades</h4>
+                        <ul>
+                            <li><a href="#viviendas">Apartamentos</a></li>
+                            <li><a href="#viviendas">Penthouses</a></li>
+                            <li><a href="#oficinas">Oficinas Pequeñas</a></li>
+                            <li><a href="#oficinas">Oficinas Ejecutivas</a></li>
+                            <li><a href="#galerias">Locales Comerciales</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="footer-links">
+                        <h4>Contacto</h4>
+                        <ul>
+                            <li><i class="fas fa-map-marker-alt me-2"></i> Av. Principal 123, Ciudad</li>
+                            <li><i class="fas fa-phone me-2"></i> (123) 456-7890</li>
+                            <li><i class="fas fa-envelope me-2"></i> info@residenciaslux.com</li>
+                            <li><i class="fas fa-clock me-2"></i> Lunes a Viernes: 9am - 6pm</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Residencias Lux. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src=".\js\scripts.js"></script>
+</body>
+</html>

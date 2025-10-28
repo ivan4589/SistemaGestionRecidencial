@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configuración - Admin Lux</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <!--<link rel="stylesheet" href="../css/styles.css">-->
+    <link rel="stylesheet" href="css/admin.css">
+    <link rel="stylesheet" href="css/configuracion.css">
+</head>
+<body class="admin-body">
+    <!-- Sidebar Navigation -->
+    <nav class="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">
+                <i class="fas fa-building"></i>
+                <span>Residencias Lux</span>
+                <small class="admin-badge">Admin</small>
+            </div>
+        </div>
+        
+        <ul class="sidebar-nav">
+            <li class="nav-item">
+                <a href="index.html" class="nav-link">
+                    <i class="fas fa-tachometer-alt"></i>
+                    <span>Dashboard</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="residentes.html" class="nav-link">
+                    <i class="fas fa-users"></i>
+                    <span>Residentes</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="propiedades.html" class="nav-link">
+                    <i class="fas fa-home"></i>
+                    <span>Propiedades</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="finanzas.html" class="nav-link">
+                    <i class="fas fa-chart-line"></i>
+                    <span>Finanzas</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="reportes.html" class="nav-link">
+                    <i class="fas fa-chart-bar"></i>
+                    <span>Reportes</span>
+                </a>
+            </li>
+            <li class="nav-item active">
+                <a href="configuracion.html" class="nav-link">
+                    <i class="fas fa-cogs"></i>
+                    <span>Configuración</span>
+                </a>
+            </li>
+        </ul>
+        
+        <div class="sidebar-footer">
+            <div class="user-info">
+                <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Admin" class="user-avatar">
+                <div class="user-details">
+                    <span class="user-name">Admin Lux</span>
+                    <span class="user-role">Administrador General</span>
+                </div>
+            </div>
+            <a href="../index.html" class="logout-btn">
+                <i class="fas fa-sign-out-alt"></i>
+                Cerrar Sesión
+            </a>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <header class="content-header">
+            <div>
+                <h1>Configuración del Sistema</h1>
+                <p class="text-muted">Administra las configuraciones generales de Residencias Lux</p>
+            </div>
+            <div class="header-actions">
+                <button class="btn btn-primary" id="guardarConfiguracionBtn">
+                    <i class="fas fa-save"></i>
+                    Guardar Cambios
+                </button>
+                <button class="btn btn-outline-primary ms-2" id="restaurarDefaultsBtn">
+                    <i class="fas fa-undo"></i>
+                    Restaurar Valores
+                </button>
+            </div>
+        </header>
+
+        <!-- Navegación de Configuración -->
+        <div class="config-nav mb-4">
+            <div class="nav-scroll">
+                <button class="nav-item active" data-target="general">
+                    <i class="fas fa-cog"></i>
+                    General
+                </button>
+                <button class="nav-item" data-target="finanzas">
+                    <i class="fas fa-dollar-sign"></i>
+                    Finanzas
+                </button>
+                <button class="nav-item" data-target="notificaciones">
+                    <i class="fas fa-bell"></i>
+                    Notificaciones
+                </button>
+                <button class="nav-item" data-target="seguridad">
+                    <i class="fas fa-shield-alt"></i>
+                    Seguridad
+                </button>
+                <button class="nav-item" data-target="usuarios">
+                    <i class="fas fa-users-cog"></i>
+                    Usuarios
+                </button>
+                <button class="nav-item" data-target="avanzado">
+                    <i class="fas fa-sliders-h"></i>
+                    Avanzado
+                </button>
+                <button class="nav-item" data-target="backup">
+                    <i class="fas fa-database"></i>
+                    Backup
+                </button>
+            </div>
+        </div>
+
+        <!-- Secciones de Configuración -->
+        <div class="config-sections">
+            <!-- Sección General -->
+            <div class="config-section active" id="general-section">
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-building me-2"></i>Información de la Propiedad</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Nombre de la Residencia *</label>
+                                    <input type="text" class="form-control" id="nombreResidencia" value="Residencias Lux" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">RIF *</label>
+                                    <input type="text" class="form-control" id="rifResidencia" value="J-123456789-0" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Dirección *</label>
+                                    <input type="text" class="form-control" id="direccionResidencia" value="Av. Principal, Urb. Las Mercedes" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Teléfono *</label>
+                                    <input type="tel" class="form-control" id="telefonoResidencia" value="+58 212-555-1234" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Email de Contacto *</label>
+                                    <input type="email" class="form-control" id="emailResidencia" value="info@residenciaslux.com" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Sitio Web</label>
+                                    <input type="url" class="form-control" id="websiteResidencia" value="https://residenciaslux.com">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Descripción</label>
+                            <textarea class="form-control" id="descripcionResidencia" rows="3">Complejo residencial de lujo con amenities exclusivos y seguridad 24/7</textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card mt-4">
+                    <div class="card-header">
+                        <h3><i class="fas fa-calendar-alt me-2"></i>Configuración de Fechas</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="mb-3">
+                                    <label class="form-label">Día de Vencimiento de Pagos</label>
+                                    <select class="form-select" id="diaVencimiento">
+                                        <option value="1">1</option>
+                                        <option value="5" selected>5</option>
+                                        <option value="10">10</option>
+                                        <option value="15">15</option>
+                                        <option value="20">20</option>
+                                        <option value="25">25</option>
+                                        <option value="28">28</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="mb-3">
+                                    <label class="form-label">Zona Horaria</label>
+                                    <select class="form-select" id="zonaHoraria">
+                                        <option value="America/Caracas" selected>Caracas (UTC-4)</option>
+                                        <option value="America/New_York">New York (UTC-5)</option>
+                                        <option value="America/Mexico_City">México (UTC-6)</option>
+                                        <option value="America/Los_Angeles">Los Angeles (UTC-8)</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="mb-3">
+                                    <label class="form-label">Formato de Fecha</label>
+                                    <select class="form-select" id="formatoFecha">
+                                        <option value="dd/mm/yyyy" selected>DD/MM/YYYY</option>
+                                        <option value="mm/dd/yyyy">MM/DD/YYYY</option>
+                                        <option value="yyyy-mm-dd">YYYY-MM-DD</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card mt-4">
+                    <div class="card-header">
+                        <h3><i class="fas fa-palette me-2"></i>Apariencia</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Tema de Color</label>
+                                    <div class="theme-selector">
+                                        <div class="theme-option active" data-theme="blue">
+                                            <div class="theme-preview blue"></div>
+                                            <span>Azul</span>
+                                        </div>
+                                        <div class="theme-option" data-theme="green">
+                                            <div class="theme-preview green"></div>
+                                            <span>Verde</span>
+                                        </div>
+                                        <div class="theme-option" data-theme="purple">
+                                            <div class="theme-preview purple"></div>
+                                            <span>Morado</span>
+                                        </div>
+                                        <div class="theme-option" data-theme="dark">
+                                            <div class="theme-preview dark"></div>
+                                            <span>Oscuro</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Logo de la Residencia</label>
+                                    <div class="logo-upload">
+                                        <div class="logo-preview">
+                                            <img src="https://via.placeholder.com/150x150/0d6efd/ffffff?text=RL" alt="Logo Residencias Lux" id="logoPreview">
+                                        </div>
+                                        <div class="upload-actions">
+                                            <button type="button" class="btn btn-outline-primary btn-sm" onclick="document.getElementById('logoUpload').click()">
+                                                <i class="fas fa-upload"></i> Cambiar Logo
+                                            </button>
+                                            <input type="file" id="logoUpload" accept="image/*" style="display: none;">
+                                            <button type="button" class="btn btn-outline-danger btn-sm" onclick="configManager.eliminarLogo()">
+                                                <i class="fas fa-trash"></i> Eliminar
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sección Finanzas -->
+            <div class="config-section" id="finanzas-section">
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-money-bill-wave me-2"></i>Configuración de Pagos</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Moneda Principal</label>
+                                    <select class="form-select" id="monedaPrincipal">
+                                        <option value="USD" selected>Dólar Americano (USD)</option>
+                                        <option value="EUR">Euro (EUR)</option>
+                                        <option value="VES">Bolívar (VES)</option>
+                                        <option value="MXN">Peso Mexicano (MXN)</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Símbolo de Moneda</label>
+                                    <input type="text" class="form-control" id="simboloMoneda" value="$" maxlength="3">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Métodos de Pago Aceptados</label>
+                                    <div class="payment-methods">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="pagoEfectivo" checked>
+                                            <label class="form-check-label" for="pagoEfectivo">
+                                                <i class="fas fa-money-bill-wave me-1"></i> Efectivo
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="pagoTransferencia" checked>
+                                            <label class="form-check-label" for="pagoTransferencia">
+                                                <i class="fas fa-exchange-alt me-1"></i> Transferencia
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="pagoTarjeta">
+                                            <label class="form-check-label" for="pagoTarjeta">
+                                                <i class="fas fa-credit-card me-1"></i> Tarjeta de Crédito
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="pagoZelle">
+                                            <label class="form-check-label" for="pagoZelle">
+                                                <i class="fas fa-mobile-alt me-1"></i> Zelle/Pago Móvil
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Recargos por Mora (%)</label>
+                                    <input type="number" class="form-control" id="recargoMora" value="5" min="0" max="50" step="0.1">
+                                    <div class="form-text">Porcentaje aplicado a pagos vencidos</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card mt-4">
+                    <div class="card-header">
+                        <h3><i class="fas fa-receipt me-2"></i>Configuración de Recibos</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Plantilla de Recibos</label>
+                                    <select class="form-select" id="plantillaRecibos">
+                                        <option value="moderna" selected>Moderna</option>
+                                        <option value="clasica">Clásica</option>
+                                        <option value="minimalista">Minimalista</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Enviar Recibos Automáticamente</label>
+                                    <select class="form-select" id="envioAutomaticoRecibos">
+                                        <option value="si" selected>Sí</option>
+                                        <option value="no">No</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Notas en Recibos</label>
+                            <textarea class="form-control" id="notasRecibos" rows="3">Gracias por su puntualidad. Para cualquier consulta, contacte a la administración.</textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sección Notificaciones -->
+            <div class="config-section" id="notificaciones-section">
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-bell me-2"></i>Configuración de Notificaciones</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h5>Notificaciones por Email</h5>
+                                <div class="notification-settings">
+                                    <div class="form-check form-switch mb-3">
+                                        <input class="form-check-input" type="checkbox" id="notifPagos" checked>
+                                        <label class="form-check-label" for="notifPagos">
+                                            Recordatorios de pago
+                                        </label>
+                                    </div>
+                                    <div class="form-check form-switch mb-3">
+                                        <input class="form-check-input" type="checkbox" id="notifMantenimiento" checked>
+                                        <label class="form-check-label" for="notifMantenimiento">
+                                            Solicitudes de mantenimiento
+                                        </label>
+                                    </div>
+                                    <div class="form-check form-switch mb-3">
+                                        <input class="form-check-input" type="checkbox" id="notifIncidentes">
+                                        <label class="form-check-label" for="notifIncidentes">
+                                            Reportes de incidentes
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <h5>Notificaciones en Sistema</h5>
+                                <div class="notification-settings">
+                                    <div class="form-check form-switch mb-3">
+                                        <input class="form-check-input" type="checkbox" id="notifSistemaPagos" checked>
+                                        <label class="form-check-label" for="notifSistemaPagos">
+                                            Pagos pendientes
+                                        </label>
+                                    </div>
+                                    <div class="form-check form-switch mb-3">
+                                        <input class="form-check-input" type="checkbox" id="notifSistemaMantenimiento" checked>
+                                        <label class="form-check-label" for="notifSistemaMantenimiento">
+                                            Mantenimiento programado
+                                        </label>
+                                    </div>
+                                    <div class="form-check form-switch mb-3">
+                                        <input class="form-check-input" type="checkbox" id="notifSistemaResidentes">
+                                        <label class="form-check-label" for="notifSistemaResidentes">
+                                            Nuevos residentes
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card mt-4">
+                    <div class="card-header">
+                        <h3><i class="fas fa-envelope me-2"></i>Configuración de Email</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Servidor SMTP</label>
+                                    <input type="text" class="form-control" id="smtpServer" value="smtp.residenciaslux.com">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Puerto SMTP</label>
+                                    <input type="number" class="form-control" id="smtpPort" value="587">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Email del Remitente</label>
+                                    <input type="email" class="form-control" id="emailRemitente" value="notificaciones@residenciaslux.com">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Nombre del Remitente</label>
+                                    <input type="text" class="form-control" id="nombreRemitente" value="Residencias Lux">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sección Seguridad -->
+            <div class="config-section" id="seguridad-section">
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-shield-alt me-2"></i>Configuración de Seguridad</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Requerir Autenticación en Dos Pasos</label>
+                                    <select class="form-select" id="authDosPasos">
+                                        <option value="no">No</option>
+                                        <option value="si" selected>Sí</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Tiempo de Expiración de Sesión (minutos)</label>
+                                    <input type="number" class="form-control" id="expiracionSesion" value="60" min="15" max="480">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Máximo de Intentos de Login</label>
+                                    <input type="number" class="form-control" id="maxIntentosLogin" value="5" min="3" max="10">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Bloquear IP después de intentos fallidos</label>
+                                    <select class="form-select" id="bloquearIP">
+                                        <option value="no">No</option>
+                                        <option value="si" selected>Sí</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card mt-4">
+                    <div class="card-header">
+                        <h3><i class="fas fa-key me-2"></i>Cambiar Contraseña</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Contraseña Actual</label>
+                                    <input type="password" class="form-control" id="passwordActual">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Nueva Contraseña</label>
+                                    <input type="password" class="form-control" id="nuevaPassword">
+                                    <div class="password-strength mt-2">
+                                        <div class="progress">
+                                            <div class="progress-bar" id="passwordStrength" style="width: 0%"></div>
+                                        </div>
+                                        <small class="text-muted" id="passwordFeedback">La contraseña debe tener al menos 8 caracteres</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Confirmar Nueva Contraseña</label>
+                                    <input type="password" class="form-control" id="confirmarPassword">
+                                </div>
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-primary" id="cambiarPasswordBtn">
+                            <i class="fas fa-key me-1"></i>
+                            Cambiar Contraseña
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sección Usuarios -->
+            <div class="config-section" id="usuarios-section">
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-users-cog me-2"></i>Gestión de Usuarios</h3>
+                        <button class="btn btn-primary btn-sm" id="nuevoUsuarioBtn">
+                            <i class="fas fa-plus"></i>
+                            Nuevo Usuario
+                        </button>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-hover" id="usuariosTable">
+                                <thead>
+                                    <tr>
+                                        <th>Usuario</th>
+                                        <th>Nombre</th>
+                                        <th>Rol</th>
+                                        <th>Email</th>
+                                        <th>Último Acceso</th>
+                                        <th>Estado</th>
+                                        <th>Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="usuariosTableBody">
+                                    <!-- Los usuarios se cargan con JavaScript -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card mt-4">
+                    <div class="card-header">
+                        <h3><i class="fas fa-user-shield me-2"></i>Roles y Permisos</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h5>Administrador General</h5>
+                                <p class="text-muted">Acceso completo a todas las funcionalidades del sistema</p>
+                                <div class="permissions-list">
+                                    <span class="badge bg-primary">Dashboard</span>
+                                    <span class="badge bg-primary">Residentes</span>
+                                    <span class="badge bg-primary">Propiedades</span>
+                                    <span class="badge bg-primary">Finanzas</span>
+                                    <span class="badge bg-primary">Reportes</span>
+                                    <span class="badge bg-primary">Configuración</span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <h5>Administrador de Finanzas</h5>
+                                <p class="text-muted">Acceso limitado a módulos financieros</p>
+                                <div class="permissions-list">
+                                    <span class="badge bg-success">Dashboard</span>
+                                    <span class="badge bg-success">Finanzas</span>
+                                    <span class="badge bg-success">Reportes</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sección Avanzado -->
+            <div class="config-section" id="avanzado-section">
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-sliders-h me-2"></i>Configuración Avanzada</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Límite de Registros por Página</label>
+                                    <input type="number" class="form-control" id="limiteRegistros" value="50" min="10" max="200">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Tiempo de Cache (minutos)</label>
+                                    <input type="number" class="form-control" id="tiempoCache" value="30" min="5" max="1440">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Habilitar Modo Debug</label>
+                                    <select class="form-select" id="modoDebug">
+                                        <option value="no" selected>No</option>
+                                        <option value="si">Sí</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Nivel de Log</label>
+                                    <select class="form-select" id="nivelLog">
+                                        <option value="error">Solo Errores</option>
+                                        <option value="warning" selected>Advertencias</option>
+                                        <option value="info">Información</option>
+                                        <option value="debug">Debug</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card mt-4">
+                    <div class="card-header">
+                        <h3><i class="fas fa-code me-2"></i>API y Integraciones</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <label class="form-label">API Key</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="apiKey" value="sk_live_123456789abcdef" readonly>
+                                <button class="btn btn-outline-secondary" type="button" onclick="configManager.regenerarApiKey()">
+                                    <i class="fas fa-sync-alt"></i>
+                                </button>
+                                <button class="btn btn-outline-secondary" type="button" onclick="configManager.mostrarApiKey()">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </div>
+                            <div class="form-text">Usa esta clave para integrar con sistemas externos</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sección Backup -->
+            <div class="config-section" id="backup-section">
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-database me-2"></i>Backup y Restauración</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="backup-card">
+                                    <i class="fas fa-download text-primary"></i>
+                                    <div>
+                                        <h5>Crear Backup</h5>
+                                        <p class="text-muted">Genera una copia de seguridad completa del sistema</p>
+                                        <button class="btn btn-primary" onclick="configManager.crearBackup()">
+                                            <i class="fas fa-database me-1"></i>
+                                            Crear Backup
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="backup-card">
+                                    <i class="fas fa-upload text-success"></i>
+                                    <div>
+                                        <h5>Restaurar Backup</h5>
+                                        <p class="text-muted">Restaura el sistema desde un backup anterior</p>
+                                        <button class="btn btn-success" onclick="document.getElementById('fileBackup').click()">
+                                            <i class="fas fa-upload me-1"></i>
+                                            Seleccionar Archivo
+                                        </button>
+                                        <input type="file" id="fileBackup" accept=".json,.sql" style="display: none;">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card mt-4">
+                    <div class="card-header">
+                        <h3><i class="fas fa-history me-2"></i>Backups Recientes</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-hover" id="backupsTable">
+                                <thead>
+                                    <tr>
+                                        <th>Nombre del Archivo</th>
+                                        <th>Fecha</th>
+                                        <th>Tamaño</th>
+                                        <th>Tipo</th>
+                                        <th>Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="backupsTableBody">
+                                    <!-- Los backups se cargan con JavaScript -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Modal Nuevo Usuario -->
+    <div class="modal fade" id="usuarioModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Nuevo Usuario</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="usuarioForm">
+                        <div class="mb-3">
+                            <label class="form-label">Nombre Completo *</label>
+                            <input type="text" class="form-control" id="nombreUsuario" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Email *</label>
+                            <input type="email" class="form-control" id="emailUsuario" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Nombre de Usuario *</label>
+                            <input type="text" class="form-control" id="usernameUsuario" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Rol *</label>
+                            <select class="form-select" id="rolUsuario" required>
+                                <option value="">Seleccionar rol</option>
+                                <option value="admin">Administrador General</option>
+                                <option value="finanzas">Administrador de Finanzas</option>
+                                <option value="residentes">Gestor de Residentes</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Contraseña Temporal</label>
+                            <input type="text" class="form-control" id="passwordTemporal" value="Temp123!" readonly>
+                            <div class="form-text">El usuario deberá cambiar esta contraseña en su primer acceso</div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" id="guardarUsuarioBtn">Crear Usuario</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/es.js"></script>
+    <script src="js/admin.js"></script>
+    <script src="js/configuracion.js"></script>
+</body>
+</html>

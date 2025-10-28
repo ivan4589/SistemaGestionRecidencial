@@ -1,0 +1,318 @@
+/* propiedades.css - Estilos específicos para gestión de propiedades */
+
+/* Estilos para las tarjetas de estadísticas mini */
+.stat-card.mini {
+    padding: 1rem;
+    border: 1px solid #e9ecef;
+    border-radius: 0.5rem;
+    background: white;
+    transition: all 0.3s ease;
+}
+
+.stat-card.mini:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.stat-card.mini .stat-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+.stat-card.mini .stat-info h3 {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.stat-card.mini .stat-info p {
+    margin: 0.25rem 0 0 0;
+    color: #6c757d;
+    font-size: 0.875rem;
+}
+
+/* Grid de Áreas Comunes */
+.area-comun-card {
+    border: 1px solid #e9ecef;
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    background: white;
+    transition: all 0.3s ease;
+    margin-bottom: 1.5rem;
+}
+
+.area-comun-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.area-comun-card .area-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+.area-comun-card .area-info h5 {
+    margin: 0 0 0.5rem 0;
+    font-weight: 600;
+}
+
+.area-comun-card .area-info p {
+    margin: 0 0 0.5rem 0;
+    color: #6c757d;
+    font-size: 0.875rem;
+}
+
+.area-comun-card .area-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid #e9ecef;
+}
+
+/* Mapa del Edificio */
+.building-map {
+    background: #f8f9fa;
+    border-radius: 0.5rem;
+    padding: 2rem;
+    min-height: 500px;
+    position: relative;
+}
+
+.floor-plan {
+    position: relative;
+    margin: 0 auto;
+    max-width: 800px;
+}
+
+.floor {
+    background: white;
+    border: 2px solid #dee2e6;
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.floor-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.floor-title {
+    font-weight: 600;
+    color: #495057;
+}
+
+.apartments-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 1rem;
+}
+
+.apartment {
+    border: 1px solid #dee2e6;
+    border-radius: 0.375rem;
+    padding: 0.75rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.apartment:hover {
+    transform: scale(1.05);
+}
+
+.apartment.ocupado {
+    background: #d1e7dd;
+    border-color: #badbcc;
+}
+
+.apartment.disponible {
+    background: #d1ecf1;
+    border-color: #bee5eb;
+}
+
+.apartment.mantenimiento {
+    background: #f8d7da;
+    border-color: #f1aeb5;
+}
+
+.apartment.reservado {
+    background: #fff3cd;
+    border-color: #ffecb5;
+}
+
+.apartment-number {
+    font-weight: 600;
+    font-size: 0.875rem;
+}
+
+.apartment-status {
+    font-size: 0.75rem;
+    margin-top: 0.25rem;
+}
+
+/* Badges personalizados */
+.badge-estado {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.5rem;
+}
+
+/* Tabla de departamentos */
+.user-cell {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.user-avatar-sm {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.table-actions {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+/* Filtros avanzados */
+.filter-section {
+    background: #f8f9fa;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+
+/* Modal enhancements */
+.modal .form-check {
+    margin-bottom: 0.5rem;
+}
+
+.modal .input-group-text {
+    background: #f8f9fa;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .stat-card.mini {
+        margin-bottom: 1rem;
+    }
+    
+    .apartments-grid {
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    }
+    
+    .table-actions {
+        flex-direction: column;
+    }
+    
+    .table-actions .btn {
+        margin-bottom: 0.25rem;
+    }
+}
+
+/* Estados de propiedades */
+.propiedad-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.375rem 0.75rem;
+    border-radius: 0.375rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.status-ocupado { background-color: #198754; }
+.status-disponible { background-color: #0dcaf0; }
+.status-mantenimiento { background-color: #dc3545; }
+.status-reservado { background-color: #ffc107; }
+
+/* Loading states */
+.loading {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.area-comun-card, .apartment {
+    animation: fadeIn 0.3s ease-out;
+}
+
+/* Tooltips personalizados */
+.custom-tooltip {
+    position: relative;
+}
+
+.custom-tooltip::before {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #333;
+    color: white;
+    padding: 0.5rem;
+    border-radius: 0.375rem;
+    font-size: 0.875rem;
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.3s;
+    pointer-events: none;
+}
+
+.custom-tooltip:hover::before {
+    opacity: 1;
+}
+
+/* Estilos para el mapa de calor de ocupación */
+.occupation-heatmap {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.heatmap-item {
+    padding: 1rem;
+    border-radius: 0.5rem;
+    text-align: center;
+    color: white;
+    font-weight: 600;
+}
+
+.heatmap-low { background-color: #d1ecf1; color: #0c5460; }
+.heatmap-medium { background-color: #bee5eb; color: #0c5460; }
+.heatmap-high { background-color: #0dcaf0; color: white; }
+.heatmap-full { background-color: #0d6efd; color: white; }

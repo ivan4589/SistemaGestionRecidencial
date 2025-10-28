@@ -1,0 +1,484 @@
+/* configuracion.css - Estilos específicos para página de configuración */
+
+/* Navegación de Configuración */
+.config-nav {
+    background: white;
+    border-radius: 0.75rem;
+    padding: 1rem;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.nav-scroll {
+    display: flex;
+    gap: 0.5rem;
+    overflow-x: auto;
+    padding-bottom: 0.5rem;
+}
+
+.nav-scroll::-webkit-scrollbar {
+    height: 4px;
+}
+
+.nav-scroll::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 2px;
+}
+
+.nav-scroll::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 2px;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    border: 2px solid #e9ecef;
+    border-radius: 2rem;
+    background: white;
+    color: #6c757d;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+.nav-item:hover {
+    border-color: #0d6efd;
+    color: #0d6efd;
+    transform: translateY(-1px);
+}
+
+.nav-item.active {
+    background: #0d6efd;
+    border-color: #0d6efd;
+    color: white;
+    box-shadow: 0 4px 12px rgba(13, 110, 253, 0.3);
+}
+
+/* Secciones de Configuración */
+.config-sections {
+    position: relative;
+}
+
+.config-section {
+    display: none;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.config-section.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Selector de Temas */
+.theme-selector {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 1rem;
+    margin-top: 0.5rem;
+}
+
+.theme-option {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem;
+    border: 2px solid #e9ecef;
+    border-radius: 0.75rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.theme-option:hover {
+    border-color: #0d6efd;
+    transform: translateY(-2px);
+}
+
+.theme-option.active {
+    border-color: #0d6efd;
+    background: rgba(13, 110, 253, 0.05);
+    box-shadow: 0 4px 12px rgba(13, 110, 253, 0.1);
+}
+
+.theme-preview {
+    width: 40px;
+    height: 40px;
+    border-radius: 0.5rem;
+    border: 2px solid #fff;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.theme-preview.blue { background: linear-gradient(135deg, #0d6efd, #6ea8fe); }
+.theme-preview.green { background: linear-gradient(135deg, #198754, #75b798); }
+.theme-preview.purple { background: linear-gradient(135deg, #6f42c1, #a370f7); }
+.theme-preview.dark { background: linear-gradient(135deg, #2c3e50, #34495e); }
+
+.theme-option span {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #495057;
+}
+
+.theme-option.active span {
+    color: #0d6efd;
+    font-weight: 600;
+}
+
+/* Upload de Logo */
+.logo-upload {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+}
+
+.logo-preview {
+    width: 120px;
+    height: 120px;
+    border: 2px dashed #dee2e6;
+    border-radius: 0.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: #f8f9fa;
+}
+
+.logo-preview img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.upload-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+/* Métodos de Pago */
+.payment-methods {
+    display: grid;
+    gap: 0.75rem;
+    margin-top: 0.5rem;
+}
+
+.payment-methods .form-check {
+    padding: 0.75rem;
+    border: 1px solid #e9ecef;
+    border-radius: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.payment-methods .form-check:hover {
+    border-color: #0d6efd;
+    background: rgba(13, 110, 253, 0.02);
+}
+
+/* Configuración de Notificaciones */
+.notification-settings {
+    padding: 1rem 0;
+}
+
+.notification-settings .form-switch {
+    padding-left: 3.5rem;
+}
+
+.notification-settings .form-check-input {
+    width: 3rem;
+    height: 1.5rem;
+}
+
+/* Fuerza de Contraseña */
+.password-strength .progress {
+    height: 6px;
+    border-radius: 3px;
+}
+
+.password-strength .progress-bar {
+    border-radius: 3px;
+    transition: all 0.3s ease;
+}
+
+/* Tarjetas de Backup */
+.backup-card {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 2rem;
+    border: 2px solid #e9ecef;
+    border-radius: 1rem;
+    background: white;
+    transition: all 0.3s ease;
+}
+
+.backup-card:hover {
+    border-color: #0d6efd;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+}
+
+.backup-card i {
+    font-size: 3rem;
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f8f9fa;
+    border-radius: 1rem;
+}
+
+.backup-card h5 {
+    margin: 0 0 0.5rem 0;
+    color: #2c3e50;
+}
+
+.backup-card p {
+    margin: 0 0 1rem 0;
+    color: #6c757d;
+}
+
+/* Lista de Permisos */
+.permissions-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.permissions-list .badge {
+    font-size: 0.75rem;
+    padding: 0.5rem 0.75rem;
+    border-radius: 1rem;
+}
+
+/* Estados de Usuario */
+.estado-usuario {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.375rem 0.75rem;
+    border-radius: 1rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+.estado-usuario.activo {
+    background: rgba(40, 167, 69, 0.1);
+    color: #28a745;
+}
+
+.estado-usuario.inactivo {
+    background: rgba(108, 117, 125, 0.1);
+    color: #6c757d;
+}
+
+.estado-usuario.bloqueado {
+    background: rgba(220, 53, 69, 0.1);
+    color: #dc3545;
+}
+
+/* Tablas de Configuración */
+.table-config th {
+    background: #f8f9fa;
+    font-weight: 600;
+    color: #495057;
+    border-bottom: 2px solid #dee2e6;
+    padding: 1rem 0.75rem;
+}
+
+.table-config td {
+    padding: 1rem 0.75rem;
+    vertical-align: middle;
+}
+
+.table-config tbody tr {
+    transition: all 0.2s ease;
+}
+
+.table-config tbody tr:hover {
+    background: #f8f9fa;
+}
+
+/* Grupos de Configuración */
+.config-group {
+    background: #f8f9fa;
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.config-group:last-child {
+    margin-bottom: 0;
+}
+
+.config-group-header {
+    display: flex;
+    justify-content: between;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.config-group-title {
+    margin: 0;
+    color: #2c3e50;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+/* Switch Personalizado */
+.custom-switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 30px;
+}
+
+.custom-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.custom-switch-slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 34px;
+}
+
+.custom-switch-slider:before {
+    position: absolute;
+    content: "";
+    height: 22px;
+    width: 22px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked + .custom-switch-slider {
+    background-color: #0d6efd;
+}
+
+input:checked + .custom-switch-slider:before {
+    transform: translateX(30px);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .nav-scroll {
+        gap: 0.25rem;
+    }
+    
+    .nav-item {
+        padding: 0.5rem 1rem;
+        font-size: 0.875rem;
+    }
+    
+    .theme-selector {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .logo-upload {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .backup-card {
+        flex-direction: column;
+        text-align: center;
+        padding: 1.5rem;
+    }
+    
+    .config-group {
+        padding: 1rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .theme-selector {
+        grid-template-columns: 1fr;
+    }
+    
+    .nav-item {
+        padding: 0.5rem 0.75rem;
+        font-size: 0.8rem;
+    }
+    
+    .nav-item i {
+        display: none;
+    }
+}
+
+/* Estados de Validación */
+.config-input.valid {
+    border-color: #198754;
+    box-shadow: 0 0 0 0.2rem rgba(25, 135, 84, 0.25);
+}
+
+.config-input.invalid {
+    border-color: #dc3545;
+    box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
+}
+
+/* Tooltips de Configuración */
+.config-tooltip {
+    position: relative;
+    cursor: help;
+}
+
+.config-tooltip::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #2c3e50;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 0.375rem;
+    font-size: 0.875rem;
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.3s;
+    pointer-events: none;
+    z-index: 1000;
+}
+
+.config-tooltip:hover::after {
+    opacity: 1;
+}
+
+/* Animaciones de Guardado */
+@keyframes savePulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+.saving {
+    animation: savePulse 1s ease-in-out;
+}
+
+.saved {
+    background: rgba(40, 167, 69, 0.1);
+    border-color: #28a745;
+}
